@@ -1,10 +1,13 @@
 package com.example.backend.domain.users.service;
 
+import com.example.backend.domain.users.dto.UserLoginDto;
 import com.example.backend.domain.users.dto.UserSignUpDto;
 import com.example.backend.domain.users.entity.User;
 import com.example.backend.domain.users.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -29,5 +32,15 @@ public class UserService {
                 .build();
 
         userRepository.save(user);
+    }
+
+    public User login(UserLoginDto userLoginDto) throws Exception {
+        Optional<User> loginUser = userRepository.findByEmailAndPassword(userLoginDto.getEmail(), userLoginDto.getPassword());
+
+        if(loginUser.isPresent()) {
+            return loginUser.get();
+        } else {
+            throw new Exception("아이디와 비밀번호를 확인해주세요");
+        }
     }
 }
