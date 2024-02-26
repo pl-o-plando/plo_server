@@ -17,10 +17,8 @@ public class UserController {
 
     @Operation(summary = "회원가입", description = "회원가입 성공 여부를 반환합니다.")
     @PostMapping("/sign_up")
-    public String signUp(@RequestBody UserSignUpDto userSignUpDto) throws Exception {
-        userService.signUp(userSignUpDto);
-
-        return "회원가입 성공";
+    public User signUp(@RequestBody UserSignUpDto userSignUpDto) throws Exception {
+        return userService.signUp(userSignUpDto);
     }
 
     @Operation(summary = "로그인", description = "로그인 성공 여부를 반환합니다.")

@@ -14,7 +14,7 @@ import java.util.Optional;
 public class UserService {
     private final UserRepository userRepository;
 
-    public void signUp(UserSignUpDto userSignUpDto) throws Exception {
+    public User signUp(UserSignUpDto userSignUpDto) throws Exception {
         if(userRepository.findByEmail(userSignUpDto.getEmail()).isPresent()) {
             throw new Exception("이미 존재하는 이메일입니다.");
         }
@@ -27,11 +27,13 @@ public class UserService {
             throw new Exception("비밀번호를 다시 확인해주세요.");
         }
 
-        User user = User.builder()
+        User createUser = User.builder()
                 .userSignUpDto(userSignUpDto)
                 .build();
 
-        userRepository.save(user);
+        userRepository.save(createUser);
+
+        return createUser;
     }
 
     public User login(UserLoginDto userLoginDto) throws Exception {
