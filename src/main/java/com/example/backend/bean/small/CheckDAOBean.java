@@ -16,9 +16,18 @@ public class CheckDAOBean {
         return requestUserSignup.getPassword().equals(requestUserSignup.getRe_password());
     }
 
-    // 존재하는 유저인지 확인
+    // 이메일로 존재하는 유저인지 확인
+    public boolean exec(String email, String username) {
+        UserEntity userEntity1 = userRepository.findByEmail(email);
+        UserEntity userEntity2 = userRepository.findByUsername(username);
+
+        return userEntity1 == null && userEntity2 == null;
+    }
+
+    // 닉네임으로 존재하는 유저인지 확인
     public boolean exec(String username) {
         UserEntity userEntity = userRepository.findByUsername(username);
+
         return userEntity == null;
     }
 }

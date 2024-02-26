@@ -16,7 +16,8 @@ public class SignupUserBean {
     private final CheckDAOBean checkDAOBean;
 
     public UserEntity exec(RequestUserSignup requestUserSignup) {
-        if(!checkDAOBean.exec(requestUserSignup)) return null;
+        if(!checkDAOBean.exec(requestUserSignup)
+                || !checkDAOBean.exec(requestUserSignup.getEmail(), requestUserSignup.getUsername())) return null;
 
         UserEntity createUser = newObjectDAOBean.exec(requestUserSignup);
         saveDAOBean.exec(createUser);
