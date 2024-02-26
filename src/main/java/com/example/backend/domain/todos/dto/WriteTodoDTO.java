@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @Getter
-public class CreateTodoDTO {
+public class WriteTodoDTO {
     String category;
     String content;
 }

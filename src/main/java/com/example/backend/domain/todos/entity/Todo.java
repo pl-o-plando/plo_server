@@ -1,7 +1,7 @@
 package com.example.backend.domain.todos.entity;
 
 import com.example.backend.domain.BaseEntity;
-import com.example.backend.domain.todos.dto.CreateTodoDTO;
+import com.example.backend.domain.todos.dto.WriteTodoDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,10 +26,16 @@ public class Todo extends BaseEntity {
     private String username;
 
     @Builder
-    public Todo(String username, CreateTodoDTO createTodoDTO) {
+    public Todo(String username, WriteTodoDTO createTodoDTO) {
         this.category = createTodoDTO.getCategory();
         this.content = createTodoDTO.getContent();
         this.username = username;
         this.isCompleted = 0;
+    }
+
+    public void updateTodo(WriteTodoDTO updateTodoDTO) {
+        this.category = updateTodoDTO.getCategory();
+        this.content = updateTodoDTO.getContent();
+        this.username = username;
     }
 }
