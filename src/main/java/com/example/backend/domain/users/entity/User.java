@@ -1,7 +1,7 @@
 package com.example.backend.domain.users.entity;
 
 import com.example.backend.domain.BaseEntity;
-import com.example.backend.domain.users.dto.UserSignUpDto;
+import com.example.backend.domain.users.dto.UserSignUpDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,9 +25,9 @@ public class User extends BaseEntity {
     private String resolution;
 
     @Builder
-    public User(UserSignUpDto userSignUpDto) {
-        this.email = userSignUpDto.getEmail();
-        this.username = userSignUpDto.getUsername();
-        this.password = userSignUpDto.getPassword();
+    public User(UserSignUpDTO userSignUpDTO) {
+        this.email = userSignUpDTO.getEmail();
+        this.username = userSignUpDTO.getUsername();
+        this.password = userSignUpDTO.getPassword();
     }
 }
