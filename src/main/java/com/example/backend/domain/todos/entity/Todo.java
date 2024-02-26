@@ -21,4 +21,5 @@ public class Todo extends BaseEntity {
     private String category;
     private boolean isCompleted;
 
+    private String username;
 }
