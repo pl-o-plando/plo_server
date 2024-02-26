@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class LoginUserBean {
     private final GetUserDAOBean getUserDAOBean;
 
-    public UserEntity exec(RequestUserInput requestUserInput) {
-        return getUserDAOBean.exec(requestUserInput);
+    public UserEntity exec(Object object) {
+        return getUserDAOBean.exec((RequestUserInput) object);
     }
 }

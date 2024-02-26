@@ -1,6 +1,6 @@
 package com.example.backend.model.entity;
 
-import com.example.backend.model.dto.WriteTodoDTO;
+import com.example.backend.model.dto.RequestTodoInput;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,16 +25,10 @@ public class TodoEntity extends BaseEntity {
     private String username;
 
     @Builder
-    public TodoEntity(String username, WriteTodoDTO createTodoDTO) {
-        this.category = createTodoDTO.getCategory();
-        this.content = createTodoDTO.getContent();
+    public TodoEntity(String username, RequestTodoInput requestTodoInput) {
+        this.category = requestTodoInput.getCategory();
+        this.content = requestTodoInput.getContent();
         this.username = username;
         this.isCompleted = 0;
-    }
-
-    public void updateTodo(WriteTodoDTO updateTodoDTO) {
-        this.category = updateTodoDTO.getCategory();
-        this.content = updateTodoDTO.getContent();
-        this.username = username;
     }
 }

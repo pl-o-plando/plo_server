@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class UserService {
-    private final LoginUserBean loginUserBean;
+    private final LoginUserBean getUserBean;
     private final SignupUserBean signupUserBean;
 
     // 회원가입
@@ -21,6 +21,6 @@ public class UserService {
 
     // 로그인
     public UserEntity loginUser(RequestUserInput requestUserInput) {
-        return loginUserBean.exec(requestUserInput);
+        return getUserBean.exec(requestUserInput);
     }
 }

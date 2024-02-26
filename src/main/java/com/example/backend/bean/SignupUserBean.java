@@ -1,7 +1,6 @@
 package com.example.backend.bean;
 
 import com.example.backend.bean.small.CheckDAOBean;
-import com.example.backend.bean.small.GetUserDAOBean;
 import com.example.backend.bean.small.NewObjectDAOBean;
 import com.example.backend.bean.small.SaveDAOBean;
 import com.example.backend.model.dto.RequestUserSignup;
