@@ -5,7 +5,6 @@ import com.example.backend.model.entity.TodoEntity;
 import com.example.backend.model.entity.UserEntity;
 import com.example.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.Hibernate;
 import org.springframework.stereotype.Component;
 
 @Component
