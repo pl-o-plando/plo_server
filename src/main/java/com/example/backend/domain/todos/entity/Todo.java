@@ -1,10 +1,12 @@
 package com.example.backend.domain.todos.entity;
 
 import com.example.backend.domain.BaseEntity;
+import com.example.backend.domain.todos.dto.CreateTodoDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -19,7 +21,15 @@ public class Todo extends BaseEntity {
 
     private String content;
     private String category;
-    private boolean isCompleted;
+    private int isCompleted;
 
     private String username;
+
+    @Builder
+    public Todo(String username, CreateTodoDTO createTodoDTO) {
+        this.category = createTodoDTO.getCategory();
+        this.content = createTodoDTO.getContent();
+        this.username = username;
+        this.isCompleted = 0;
+    }
 }
