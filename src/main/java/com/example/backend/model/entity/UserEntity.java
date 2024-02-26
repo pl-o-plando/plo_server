@@ -1,6 +1,6 @@
-package com.example.backend.entity;
+package com.example.backend.model.entity;
 
-import com.example.backend.dto.UserSignUpDTO;
+import com.example.backend.model.dto.RequestUserSignup;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor
-public class User extends BaseEntity {
+public class UserEntity extends BaseEntity {
     @Id
     @GeneratedValue
     @Column(name = "user_id")
@@ -24,9 +24,9 @@ public class User extends BaseEntity {
     private String resolution;
 
     @Builder
-    public User(UserSignUpDTO userSignUpDTO) {
-        this.email = userSignUpDTO.getEmail();
-        this.username = userSignUpDTO.getUsername();
-        this.password = userSignUpDTO.getPassword();
+    public UserEntity(RequestUserSignup requestUserSignup) {
+        this.email = requestUserSignup.getEmail();
+        this.username = requestUserSignup.getUsername();
+        this.password = requestUserSignup.getPassword();
     }
 }

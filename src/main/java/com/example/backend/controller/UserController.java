@@ -1,8 +1,8 @@
 package com.example.backend.controller;
 
-import com.example.backend.dto.UserLoginDTO;
-import com.example.backend.dto.UserSignUpDTO;
-import com.example.backend.entity.User;
+import com.example.backend.model.dto.RequestUserInput;
+import com.example.backend.model.dto.RequestUserSignup;
+import com.example.backend.model.entity.UserEntity;
 import com.example.backend.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
@@ -12,40 +12,45 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
 
-    @Operation(summary = "회원가입", description = "회원가입 성공 여부를 반환합니다.")
-    @PostMapping("/signup")
-    public ResponseEntity<?> signUp(@RequestBody UserSignUpDTO userSignUpDTO) {
-        try {
-            User createdUser = userService.signUp(userSignUpDTO);
-
-            // 회원가입 성공 시 사용자 정보 반환
-            return ResponseEntity.ok(createdUser);
-        } catch (Exception e) {
-
-            // 회원가입 실패 시 400 Bad Request 반환
-            ErrorResponse errorResponse = new ErrorResponse(e.getMessage());
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
-        }
-    }
-
     @Operation(summary = "로그인", description = "로그인 성공 여부를 반환합니다.")
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody UserLoginDTO userLoginDTO) {
-        try {
-            User loginUser = userService.login(userLoginDTO);
+    public ResponseEntity<Map<String, Object>> login(@RequestBody RequestUserInput requestUserInput) {
+        // 로그인 유저 받기
+        UserEntity userEntity = userService.loginUser(requestUserInput);
 
-            // 로그인 성공 시 사용자 정보 반환
-            return ResponseEntity.ok(loginUser);
-        } catch (Exception e) {
+        // HTTP 상태 반환
+        HttpStatus httpStatus = (userEntity != null) ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR;
 
-            // 로그인 실패 시 401 Unauthorized 반환
-            ErrorResponse errorResponse = new ErrorResponse(e.getMessage());
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
-        }
+        // 메시지와 User 데이터를 JSON 데이터로 반환
+        Map<String, Object> requestMap = new HashMap<>();
+        requestMap.put("message", (userEntity != null) ? "Login Success" : "Login Fail");
+        requestMap.put("user", userEntity);
+
+        return ResponseEntity.status(httpStatus).body(requestMap);
+    }
+
+    @Operation(summary = "회원가입", description = "회원가입 성공 여부를 반환합니다.")
+    @PostMapping("/signup")
+    public ResponseEntity<Map<String, Object>> signup(@RequestBody RequestUserSignup requestUserSignup) {
+        // 회원가입 정보 받기
+        UserEntity userEntity = userService.signupUser(requestUserSignup);
+
+        // HTTP 상태 반환
+        HttpStatus httpStatus = (userEntity != null) ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR;
+
+        // 메시지와 User 데이터를 JSON 데이터로 반환
+        Map<String, Object> requestMap = new HashMap<>();
+        requestMap.put("message", (userEntity != null) ? "Signup Success" : "Signup Fail");
+        requestMap.put("user", userEntity);
+
+        return ResponseEntity.status(httpStatus).body(requestMap);
     }
 }

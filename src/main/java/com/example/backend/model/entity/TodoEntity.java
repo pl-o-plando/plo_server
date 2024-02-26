@@ -1,6 +1,6 @@
-package com.example.backend.entity;
+package com.example.backend.model.entity;
 
-import com.example.backend.dto.WriteTodoDTO;
+import com.example.backend.model.dto.WriteTodoDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor
-public class Todo extends BaseEntity {
+public class TodoEntity extends BaseEntity {
     @Id
     @GeneratedValue
     @Column(name = "todo_id")
@@ -25,7 +25,7 @@ public class Todo extends BaseEntity {
     private String username;
 
     @Builder
-    public Todo(String username, WriteTodoDTO createTodoDTO) {
+    public TodoEntity(String username, WriteTodoDTO createTodoDTO) {
         this.category = createTodoDTO.getCategory();
         this.content = createTodoDTO.getContent();
         this.username = username;
