@@ -1,8 +1,8 @@
 package com.example.backend.domain.users.controller;
 
 import com.example.backend.domain.ErrorResponse;
-import com.example.backend.domain.users.dto.UserLoginDto;
-import com.example.backend.domain.users.dto.UserSignUpDto;
+import com.example.backend.domain.users.dto.UserLoginDTO;
+import com.example.backend.domain.users.dto.UserSignUpDTO;
 import com.example.backend.domain.users.entity.User;
 import com.example.backend.domain.users.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -20,9 +20,9 @@ public class UserController {
 
     @Operation(summary = "회원가입", description = "회원가입 성공 여부를 반환합니다.")
     @PostMapping("/signup")
-    public ResponseEntity<?> signUp(@RequestBody UserSignUpDto userSignUpDto) {
+    public ResponseEntity<?> signUp(@RequestBody UserSignUpDTO userSignUpDTO) {
         try {
-            User createdUser = userService.signUp(userSignUpDto);
+            User createdUser = userService.signUp(userSignUpDTO);
 
             // 회원가입 성공 시 사용자 정보 반환
             return ResponseEntity.ok(createdUser);
@@ -36,9 +36,9 @@ public class UserController {
 
     @Operation(summary = "로그인", description = "로그인 성공 여부를 반환합니다.")
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody UserLoginDto userLoginDto) {
+    public ResponseEntity<?> login(@RequestBody UserLoginDTO userLoginDTO) {
         try {
-            User loginUser = userService.login(userLoginDto);
+            User loginUser = userService.login(userLoginDTO);
 
             // 로그인 성공 시 사용자 정보 반환
             return ResponseEntity.ok(loginUser);

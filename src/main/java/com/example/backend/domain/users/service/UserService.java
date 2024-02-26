@@ -1,7 +1,7 @@
 package com.example.backend.domain.users.service;
 
-import com.example.backend.domain.users.dto.UserLoginDto;
-import com.example.backend.domain.users.dto.UserSignUpDto;
+import com.example.backend.domain.users.dto.UserLoginDTO;
+import com.example.backend.domain.users.dto.UserSignUpDTO;
 import com.example.backend.domain.users.entity.User;
 import com.example.backend.domain.users.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,21 +14,21 @@ import java.util.Optional;
 public class UserService {
     private final UserRepository userRepository;
 
-    public User signUp(UserSignUpDto userSignUpDto) throws Exception {
-        if(userRepository.findByEmail(userSignUpDto.getEmail()).isPresent()) {
+    public User signUp(UserSignUpDTO userSignUpDTO) throws Exception {
+        if(userRepository.findByEmail(userSignUpDTO.getEmail()).isPresent()) {
             throw new Exception("이미 존재하는 이메일입니다.");
         }
 
-        if(userRepository.findByUsername(userSignUpDto.getUsername()).isPresent()) {
+        if(userRepository.findByUsername(userSignUpDTO.getUsername()).isPresent()) {
             throw new Exception("이미 존재하는 닉네임입니다.");
         }
 
-        if(!userSignUpDto.getPassword().equals(userSignUpDto.getRe_password())) {
+        if(!userSignUpDTO.getPassword().equals(userSignUpDTO.getRe_password())) {
             throw new Exception("비밀번호를 다시 확인해주세요.");
         }
 
         User createUser = User.builder()
-                .userSignUpDto(userSignUpDto)
+                .userSignUpDTO(userSignUpDTO)
                 .build();
 
         userRepository.save(createUser);
@@ -36,8 +36,8 @@ public class UserService {
         return createUser;
     }
 
-    public User login(UserLoginDto userLoginDto) throws Exception {
-        Optional<User> loginUser = userRepository.findByEmailAndPassword(userLoginDto.getEmail(), userLoginDto.getPassword());
+    public User login(UserLoginDTO userLoginDTO) throws Exception {
+        Optional<User> loginUser = userRepository.findByEmailAndPassword(userLoginDTO.getEmail(), userLoginDTO.getPassword());
 
         if(loginUser.isPresent()) {
             return loginUser.get();
