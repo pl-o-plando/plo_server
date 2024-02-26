@@ -14,10 +14,10 @@ spring:
     open-in-view: false
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
 
 springdoc:
-  packages-to-scan: com.example.controller
+  packages-to-scan: com.example.backend.domain
   default-consumes-media-type: application/json;charset=UTF-8
   default-produces-media-type: application/json;charset=UTF-8
   swagger-ui:
