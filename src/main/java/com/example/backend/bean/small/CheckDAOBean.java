@@ -1,9 +1,11 @@
 package com.example.backend.bean.small;
 
 import com.example.backend.model.dto.RequestUserSignup;
+import com.example.backend.model.entity.TodoEntity;
 import com.example.backend.model.entity.UserEntity;
 import com.example.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -29,5 +31,10 @@ public class CheckDAOBean {
         UserEntity userEntity = userRepository.findByUsername(username);
 
         return userEntity == null;
+    }
+
+    // 사용자의 이름과 작성자의 이름이 동일한지 확인
+    public boolean exec(String username, TodoEntity todoEntity) {
+        return username.equals(todoEntity.getUsername());
     }
 }
