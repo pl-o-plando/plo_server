@@ -36,35 +36,4 @@ public class TodoController {
 
         return ResponseEntity.status(httpStatus).body(requestMap);
     }
-//    public ResponseEntity<?> createTodo(@PathVariable("username") String username, @RequestBody WriteTodoDTO writeTodoDTO) {
-//        try {
-//            TodoEntity createTodoEntity = todoService.createTodo(username, writeTodoDTO);
-//
-//            // 투두 작성 성공 시 사용자 정보 반환
-//            return ResponseEntity.ok(createTodoEntity);
-//        } catch (Exception e) {
-//
-//            // 투두 작성 실패 시 400 Bad Request 반환
-//            ErrorResponse errorResponse = new ErrorResponse(e.getMessage());
-//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
-//        }
-//    }
-//
-//    @Operation(summary = "투두 수정", description = "투두 수정 성공 여부를 반환합니다.")
-//    @PostMapping("/{username}/todo/update/{todo_id}")
-//    public ResponseEntity<?> updateTodo(@PathVariable("username") String username,
-//                                        @PathVariable("todo_id") long todoId,
-//                                        @RequestBody WriteTodoDTO writeTodoDTO) {
-//        try {
-//            TodoEntity updateTodoEntity = todoService.updateTodo(username, todoId, writeTodoDTO);
-//
-//            // 투두 작성 성공 시 사용자 정보 반환
-//            return ResponseEntity.ok(updateTodoEntity);
-//        } catch (Exception e) {
-//
-//            // 투두 작성 실패 시 400 Bad Request 반환
-//            ErrorResponse errorResponse = new ErrorResponse(e.getMessage());
-//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
-//        }
-//    }
 }

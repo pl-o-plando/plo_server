@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class GetUserDAOBean {
     private final UserRepository userRepository;
+
     // 이메일과 비밀번호로 유저 찾기
     public UserEntity exec(RequestUserInput requestUserInput) {
         return userRepository.findByEmailAndPassword(requestUserInput.getEmail(), requestUserInput.getPassword());

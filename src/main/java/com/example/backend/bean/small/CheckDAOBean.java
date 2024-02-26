@@ -16,7 +16,7 @@ public class CheckDAOBean {
         return requestUserSignup.getPassword().equals(requestUserSignup.getRe_password());
     }
 
-    // 이메일로 존재하는 유저인지 확인
+    // 이메일과 닉네임 중 하나라도 사용 중인지 확인
     public boolean exec(String email, String username) {
         UserEntity userEntity1 = userRepository.findByEmail(email);
         UserEntity userEntity2 = userRepository.findByUsername(username);
@@ -24,7 +24,7 @@ public class CheckDAOBean {
         return userEntity1 == null && userEntity2 == null;
     }
 
-    // 닉네임으로 존재하는 유저인지 확인
+    // 존재하는 닉네임인지 확인
     public boolean exec(String username) {
         UserEntity userEntity = userRepository.findByUsername(username);
 
