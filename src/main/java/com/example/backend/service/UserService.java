@@ -1,9 +1,9 @@
-package com.example.backend.domain.users.service;
+package com.example.backend.service;
 
-import com.example.backend.domain.users.dto.UserLoginDTO;
-import com.example.backend.domain.users.dto.UserSignUpDTO;
-import com.example.backend.domain.users.entity.User;
-import com.example.backend.domain.users.repository.UserRepository;
+import com.example.backend.dto.UserLoginDTO;
+import com.example.backend.dto.UserSignUpDTO;
+import com.example.backend.entity.User;
+import com.example.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

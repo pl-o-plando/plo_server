@@ -1,4 +1,4 @@
-package com.example.backend.domain;
+package com.example.backend.controller;
 
 public class ErrorResponse {
     private String message;

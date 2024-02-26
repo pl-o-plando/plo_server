@@ -1,6 +1,6 @@
-package com.example.backend.domain.todos.repository;
+package com.example.backend.repository;
 
-import com.example.backend.domain.todos.entity.Todo;
+import com.example.backend.entity.Todo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TodoRepository extends JpaRepository<Todo, Long> {

@@ -1,7 +1,6 @@
-package com.example.backend.domain.todos.entity;
+package com.example.backend.entity;
 
-import com.example.backend.domain.BaseEntity;
-import com.example.backend.domain.todos.dto.WriteTodoDTO;
+import com.example.backend.dto.WriteTodoDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

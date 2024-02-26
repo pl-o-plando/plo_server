@@ -1,9 +1,8 @@
-package com.example.backend.domain.todos.controller;
+package com.example.backend.controller;
 
-import com.example.backend.domain.ErrorResponse;
-import com.example.backend.domain.todos.dto.WriteTodoDTO;
-import com.example.backend.domain.todos.entity.Todo;
-import com.example.backend.domain.todos.service.TodoService;
+import com.example.backend.dto.WriteTodoDTO;
+import com.example.backend.entity.Todo;
+import com.example.backend.service.TodoService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

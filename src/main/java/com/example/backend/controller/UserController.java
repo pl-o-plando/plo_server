@@ -1,10 +1,9 @@
-package com.example.backend.domain.users.controller;
+package com.example.backend.controller;
 
-import com.example.backend.domain.ErrorResponse;
-import com.example.backend.domain.users.dto.UserLoginDTO;
-import com.example.backend.domain.users.dto.UserSignUpDTO;
-import com.example.backend.domain.users.entity.User;
-import com.example.backend.domain.users.service.UserService;
+import com.example.backend.dto.UserLoginDTO;
+import com.example.backend.dto.UserSignUpDTO;
+import com.example.backend.entity.User;
+import com.example.backend.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

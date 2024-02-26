@@ -1,7 +1,6 @@
-package com.example.backend.domain.users.entity;
+package com.example.backend.entity;
 
-import com.example.backend.domain.BaseEntity;
-import com.example.backend.domain.users.dto.UserSignUpDTO;
+import com.example.backend.dto.UserSignUpDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

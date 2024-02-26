@@ -1,9 +1,9 @@
-package com.example.backend.domain.todos.service;
+package com.example.backend.service;
 
-import com.example.backend.domain.todos.dto.WriteTodoDTO;
-import com.example.backend.domain.todos.entity.Todo;
-import com.example.backend.domain.todos.repository.TodoRepository;
-import com.example.backend.domain.users.repository.UserRepository;
+import com.example.backend.dto.WriteTodoDTO;
+import com.example.backend.entity.Todo;
+import com.example.backend.repository.TodoRepository;
+import com.example.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
