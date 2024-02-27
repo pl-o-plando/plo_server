@@ -10,6 +10,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Entity
 @Getter
 @Setter
@@ -32,5 +34,11 @@ public class TodoEntity extends BaseEntity {
         this.content = requestTodoInput.getContent();
         this.username = username;
         this.isCompleted = 0;
+    }
+
+    public TodoEntity(String content, String category, String username) {
+        this.content = content;
+        this.username = username;
+        this.category = category;
     }
 }
