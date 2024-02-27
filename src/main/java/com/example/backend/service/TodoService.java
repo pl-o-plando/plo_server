@@ -9,6 +9,8 @@ import com.example.backend.model.entity.TodoEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -31,7 +33,11 @@ public class TodoService {
         return deleteTodoBean.exec(username, todoId);
     }
 
-    public List<TodoEntity> getTodosEntity(String username) {
+    public List<TodoEntity> getByUserTodosEntity(String username) {
         return showTodoBean.exec(username);
+    }
+
+    public List<TodoEntity> getByDateTodosEntity(String username, LocalDate date) {
+        return showTodoBean.exec(username, date);
     }
 }

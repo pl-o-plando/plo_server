@@ -5,6 +5,8 @@ import com.example.backend.model.entity.TodoEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Component
@@ -14,5 +16,9 @@ public class ShowTodoBean {
 
     public List<TodoEntity> exec(String username) {
         return getTodoDAOsBean.exec(username);
+    }
+
+    public List<TodoEntity> exec(String username, LocalDate date) {
+        return getTodoDAOsBean.exec(username, date);
     }
 }

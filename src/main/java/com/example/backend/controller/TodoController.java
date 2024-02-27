@@ -5,10 +5,13 @@ import com.example.backend.model.entity.TodoEntity;
 import com.example.backend.service.TodoService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -70,9 +73,16 @@ public class TodoController {
         return ResponseEntity.status(httpStatus).body(requestMap);
     }
 
-    @Operation(summary = "투두 조회", description = "조회된 투두 내역을 반환합니다.")
+    @Operation(summary = "유저별 투두 조회", description = "조회된 투두 내역을 반환합니다.")
+    @GetMapping("/todo/{username}/list")
+    public List<TodoEntity> searchByUserTodo(@PathVariable("username") String username) {
+        return todoService.getByUserTodosEntity(username);
+    }
+
+    @Operation(summary = "특정 유저의 날짜별 투두 조회", description = "조회된 투두 내역을 반환합니다.")
     @GetMapping("/{username}/todo/list")
-    public List<TodoEntity> searchTodo(@PathVariable("username") String username) {
-        return todoService.getTodosEntity(username);
+    public List<TodoEntity> searchByDateTodo(@PathVariable("username") String username,
+                                             @RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+        return todoService.getByDateTodosEntity(username, date);
     }
 }
