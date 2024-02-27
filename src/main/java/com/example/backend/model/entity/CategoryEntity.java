@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,5 +19,12 @@ public class CategoryEntity {
     @Column(name = "todo_id")
     private Long id;
 
-    private String name;
+    private String category;
+    private String username;
+
+    @Builder
+    public CategoryEntity(String username, String category) {
+        this.username = username;
+        this.category = category;
+    }
 }
