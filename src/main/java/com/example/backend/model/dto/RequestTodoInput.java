@@ -6,4 +6,5 @@ import lombok.Data;
 public class RequestTodoInput {
     String category;
     String content;
+    String date;
 }
