@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -53,7 +54,6 @@ public class TodoController {
         return ResponseEntity.status(httpStatus).body(requestMap);
     }
 
-    // 할 일 삭제
     @Operation(summary = "투두 삭제", description = "투두 삭제 성공 여부를 반환합니다.")
     @DeleteMapping("/{username}/todo/delete/{todo_id}")
     public ResponseEntity<Map<String, Object>> deleteTodo(@PathVariable("username") String username, @PathVariable("todo_id") Long todoId) {
@@ -68,5 +68,11 @@ public class TodoController {
         requestMap.put("id", id);
 
         return ResponseEntity.status(httpStatus).body(requestMap);
+    }
+
+    @Operation(summary = "투두 조회", description = "조회된 투두 내역을 반환합니다.")
+    @GetMapping("/{username}/todo/list")
+    public List<TodoEntity> searchTodo(@PathVariable("username") String username) {
+        return todoService.getTodosEntity(username);
     }
 }
