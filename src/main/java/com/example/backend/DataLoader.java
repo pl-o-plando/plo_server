@@ -8,8 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
-
 @Component
 @RequiredArgsConstructor
 public class DataLoader implements CommandLineRunner {
@@ -21,7 +19,7 @@ public class DataLoader implements CommandLineRunner {
         UserEntity userEntity = new UserEntity("string", "string", "string");
         userRepository.save(userEntity);
 
-        TodoEntity todoEntity = new TodoEntity("string", "string", "string");
+        TodoEntity todoEntity = new TodoEntity("string", "string", "string", "2024-02-24");
         todoRepository.save(todoEntity);
     }
 }
