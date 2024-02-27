@@ -6,12 +6,10 @@ import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -50,5 +48,11 @@ public class CategoryController {
         requestMap.put("id", id);
 
         return ResponseEntity.status(httpStatus).body(requestMap);
+    }
+
+    @Operation(summary = "유저별 카테고리 조회", description = "조회된 카테고리 내역을 반환합니다.")
+    @GetMapping("/category/list")
+    public List<CategoryEntity> searchByUserTodo(@RequestParam("username") String username) {
+        return categoryService.getCategoryEntityByUsername(username);
     }
 }
