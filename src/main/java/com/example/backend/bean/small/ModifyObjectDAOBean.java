@@ -18,4 +18,10 @@ public class ModifyObjectDAOBean {
 
         return todoEntity;
     }
+
+    public TodoEntity exec(TodoEntity todoEntity, int isCompleted) {
+        todoEntity.setIsCompleted(isCompleted);
+
+        return todoEntity;
+    }
 }

@@ -29,7 +29,7 @@ public class TodoController {
         // HTTP 상태 반환
         HttpStatus httpStatus = (todoEntity != null) ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR;
 
-        // 메시지와 User 데이터를 JSON 데이터로 반환
+        // 메시지와 할일 데이터를 JSON 데이터로 반환
         Map<String, Object> requestMap = new HashMap<>();
         requestMap.put("message", (todoEntity != null) ? "Todo Write Success" : "Todo Write Fail");
         requestMap.put("todo", todoEntity);
@@ -48,7 +48,7 @@ public class TodoController {
         // HTTP 상태 반환
         HttpStatus httpStatus = (todoEntity != null) ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR;
 
-        // 메시지와 User 데이터를 JSON 데이터로 반환
+        // 메시지와 할일 데이터를 JSON 데이터로 반환
         Map<String, Object> requestMap = new HashMap<>();
         requestMap.put("message", (todoEntity != null) ? "Todo Modify Success" : "Todo Modify Fail");
         requestMap.put("todo", todoEntity);
@@ -83,5 +83,23 @@ public class TodoController {
     public List<TodoEntity> searchByDateTodo(@RequestParam("username") String username,
                                              @RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
         return todoService.getByDateTodosEntity(username, date);
+    }
+
+    @Operation(summary = "투두 상태 변경", description = "투두 상태 변경 성공 여부를 반환합니다.")
+    @PostMapping("/todo/state")
+    public ResponseEntity<Map<String, Object>> changeStateTodo(@RequestParam("username") String username,
+                                                               @RequestParam("todo_id") Long todoId,
+                                                               @RequestParam("isCompleted") int isCompleted) {
+        TodoEntity todoEntity = todoService.changeStateTodoEntity(username, todoId, isCompleted);
+
+        // HTTP 상태 반환
+        HttpStatus httpStatus = (todoEntity != null) ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR;
+
+        // 메시지와 할일 데이터를 json 데이터로 반환
+        Map<String, Object> requestMap = new HashMap<>();
+        requestMap.put("message", (todoEntity != null) ? "Change State Success" : "Change State Fail");
+        requestMap.put("todo", todoEntity);
+
+        return ResponseEntity.status(httpStatus).body(requestMap);
     }
 }
