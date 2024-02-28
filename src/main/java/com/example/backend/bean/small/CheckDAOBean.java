@@ -12,11 +12,6 @@ import org.springframework.stereotype.Component;
 public class CheckDAOBean {
     private final UserRepository userRepository;
 
-    // 회원가입시 비밀번호, 비밀번호 확인이 올바른지 확인
-    public boolean exec(RequestUserSignup requestUserSignup) {
-        return requestUserSignup.getPassword().equals(requestUserSignup.getRe_password());
-    }
-
     // 이메일과 닉네임 중 하나라도 사용 중인지 확인
     public boolean exec(String email, String username) {
         UserEntity userEntity1 = userRepository.findByEmail(email);
