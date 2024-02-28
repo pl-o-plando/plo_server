@@ -30,11 +30,11 @@ public class TodoService {
         return deleteTodoBean.exec(username, todoId);
     }
 
-    public List<TodoEntity> getByUserTodosEntity(String username) {
+    public List<TodoEntity> getTodoEntityByUser(String username) {
         return showTodoBean.exec(username);
     }
 
-    public List<TodoEntity> getByDateTodosEntity(String username, LocalDate date) {
+    public List<TodoEntity> getTodoEntityByDate(String username, LocalDate date) {
         return showTodoBean.exec(username, date);
     }
 

@@ -2,6 +2,7 @@ package com.example.backend.bean.small;
 
 import com.example.backend.model.dto.RequestTodoInput;
 import com.example.backend.model.dto.RequestUserSignup;
+import com.example.backend.model.entity.CategoryEntity;
 import com.example.backend.model.entity.TodoEntity;
 import com.example.backend.model.entity.UserEntity;
 import lombok.RequiredArgsConstructor;
@@ -26,5 +27,14 @@ public class NewObjectDAOBean {
                                     .username(username)
                                     .build();
         return todoEntity;
+    }
+
+    // 카테고리 객체 생성
+    public CategoryEntity exec(String username, String category) {
+        CategoryEntity categoryEntity = CategoryEntity.builder()
+                                            .username(username)
+                                            .category(category)
+                                            .build();
+        return  categoryEntity;
     }
 }
