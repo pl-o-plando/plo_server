@@ -15,10 +15,10 @@ public class SaveTodoBean {
     private final NewObjectDAOBean newObjectDAOBean;
     private final SaveDAOBean saveDAOBean;
 
-    public TodoEntity exec(String username, RequestTodoInput requestTodoInput) {
-        if(checkDAOBean.exec(username)) return null;
+    public TodoEntity exec(RequestTodoInput requestTodoInput) {
+        if(checkDAOBean.exec(requestTodoInput.getUserId())) return null;
 
-        TodoEntity todoEntity = newObjectDAOBean.exec(username, requestTodoInput);
+        TodoEntity todoEntity = newObjectDAOBean.exec(requestTodoInput);
 
         saveDAOBean.exec(todoEntity);
 

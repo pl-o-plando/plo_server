@@ -20,9 +20,9 @@ public class CheckDAOBean {
         return userEntity1 == null && userEntity2 == null;
     }
 
-    // 존재하는 닉네임인지 확인
-    public boolean exec(String username) {
-        UserEntity userEntity = userRepository.findByUsername(username);
+    // 존재하는 유저 아이디인지 확인
+    public boolean exec(Long userId) {
+        UserEntity userEntity = userRepository.getById(userId);
 
         return userEntity == null;
     }

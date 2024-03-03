@@ -18,8 +18,8 @@ public class TodoService {
     private final ShowTodoBean showTodoBean;
     private final ChangeStateTodoBean changeStateTodoBean;
 
-    public TodoEntity saveTodoEntity(String username, RequestTodoInput requestTodoInput) {
-        return saveTodoBean.exec(username, requestTodoInput);
+    public TodoEntity saveTodoEntity(RequestTodoInput requestTodoInput) {
+        return saveTodoBean.exec(requestTodoInput);
     }
 
     public TodoEntity modifyTodoEntity(String username, Long userId, RequestTodoInput requestTodoInput) {

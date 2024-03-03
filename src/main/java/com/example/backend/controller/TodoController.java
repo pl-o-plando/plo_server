@@ -22,9 +22,9 @@ public class TodoController {
 
     @Operation(summary = "투두 작성", description = "투두 작성 성공 여부를 반환합니다.")
     @PostMapping("/todo/write")
-    public ResponseEntity<Map<String, Object>> writeTodo(@RequestParam("username") String username, @RequestBody RequestTodoInput requestTodoInput) {
+    public ResponseEntity<Map<String, Object>> writeTodo(@RequestBody RequestTodoInput requestTodoInput) {
         // 할일 저장하기
-        TodoEntity todoEntity = todoService.saveTodoEntity(username, requestTodoInput);
+        TodoEntity todoEntity = todoService.saveTodoEntity(requestTodoInput);
 
         // HTTP 상태 반환
         HttpStatus httpStatus = (todoEntity != null) ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR;

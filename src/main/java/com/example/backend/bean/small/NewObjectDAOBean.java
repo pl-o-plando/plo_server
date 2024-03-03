@@ -21,10 +21,9 @@ public class NewObjectDAOBean {
     }
 
     // 할일 객체 생성
-    public TodoEntity exec(String username, RequestTodoInput requestTodoInput) {
+    public TodoEntity exec(RequestTodoInput requestTodoInput) {
         TodoEntity todoEntity = TodoEntity.builder()
                                     .requestTodoInput(requestTodoInput)
-                                    .username(username)
                                     .build();
         return todoEntity;
     }

@@ -29,20 +29,20 @@ public class TodoEntity {
     private LocalDate createdAt;
     private LocalDate finishedAt;
 
-    private String username;
+    private Long userId;
 
     @Builder
-    public TodoEntity(String username, RequestTodoInput requestTodoInput) {
+    public TodoEntity(RequestTodoInput requestTodoInput) {
         this.category = requestTodoInput.getCategory();
         this.content = requestTodoInput.getContent();
         this.createdAt = LocalDate.parse(requestTodoInput.getDate());
-        this.username = username;
+        this.userId = requestTodoInput.getUserId();
         this.isCompleted = 0;
     }
 
-    public TodoEntity(String content, String category, String username, String date) {
+    public TodoEntity(String content, String category, Long userId, String date) {
         this.content = content;
-        this.username = username;
+        this.userId = userId;
         this.category = category;
         this.createdAt = LocalDate.parse(date);
     }
