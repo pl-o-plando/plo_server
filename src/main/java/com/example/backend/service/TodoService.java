@@ -1,7 +1,7 @@
 package com.example.backend.service;
 
 import com.example.backend.bean.*;
-import com.example.backend.model.dto.RequestTodoInput;
+import com.example.backend.model.dto.RequestWriteTodoInput;
 import com.example.backend.model.entity.TodoEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,12 +18,12 @@ public class TodoService {
     private final ShowTodoBean showTodoBean;
     private final ChangeStateTodoBean changeStateTodoBean;
 
-    public TodoEntity saveTodoEntity(RequestTodoInput requestTodoInput) {
-        return saveTodoBean.exec(requestTodoInput);
+    public TodoEntity saveTodoEntity(RequestWriteTodoInput requestWriteTodoInput) {
+        return saveTodoBean.exec(requestWriteTodoInput);
     }
 
-    public TodoEntity modifyTodoEntity(String username, Long userId, RequestTodoInput requestTodoInput) {
-        return modifyTodoBean.exec(username, userId, requestTodoInput);
+    public TodoEntity modifyTodoEntity(String username, Long userId, RequestWriteTodoInput requestWriteTodoInput) {
+        return modifyTodoBean.exec(username, userId, requestWriteTodoInput);
     }
 
     public Long deleteTodoEntity(String username, Long todoId) {

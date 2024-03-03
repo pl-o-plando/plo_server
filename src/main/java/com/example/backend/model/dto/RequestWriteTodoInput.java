@@ -3,7 +3,7 @@ package com.example.backend.model.dto;
 import lombok.Data;
 
 @Data
-public class RequestTodoInput {
+public class RequestWriteTodoInput {
     Long userId;
     String category;
     String content;

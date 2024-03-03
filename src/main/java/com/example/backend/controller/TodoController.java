@@ -1,6 +1,6 @@
 package com.example.backend.controller;
 
-import com.example.backend.model.dto.RequestTodoInput;
+import com.example.backend.model.dto.RequestWriteTodoInput;
 import com.example.backend.model.entity.TodoEntity;
 import com.example.backend.service.TodoService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -22,9 +22,9 @@ public class TodoController {
 
     @Operation(summary = "투두 작성", description = "투두 작성 성공 여부를 반환합니다.")
     @PostMapping("/todo/write")
-    public ResponseEntity<Map<String, Object>> writeTodo(@RequestBody RequestTodoInput requestTodoInput) {
+    public ResponseEntity<Map<String, Object>> writeTodo(@RequestBody RequestWriteTodoInput requestWriteTodoInput) {
         // 할일 저장하기
-        TodoEntity todoEntity = todoService.saveTodoEntity(requestTodoInput);
+        TodoEntity todoEntity = todoService.saveTodoEntity(requestWriteTodoInput);
 
         // HTTP 상태 반환
         HttpStatus httpStatus = (todoEntity != null) ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR;
@@ -41,9 +41,9 @@ public class TodoController {
     @PostMapping("/todo/modify")
     public ResponseEntity<Map<String, Object>> modifyTodo(@RequestParam("username") String username,
                                                           @RequestParam("todo_id") Long todoId,
-                                                          @RequestBody RequestTodoInput requestTodoInput) {
+                                                          @RequestBody RequestWriteTodoInput requestWriteTodoInput) {
         // 회원가입 정보 받기
-        TodoEntity todoEntity = todoService.modifyTodoEntity(username, todoId, requestTodoInput);
+        TodoEntity todoEntity = todoService.modifyTodoEntity(username, todoId, requestWriteTodoInput);
 
         // HTTP 상태 반환
         HttpStatus httpStatus = (todoEntity != null) ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR;

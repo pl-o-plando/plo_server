@@ -1,6 +1,6 @@
 package com.example.backend.model.entity;
 
-import com.example.backend.model.dto.RequestTodoInput;
+import com.example.backend.model.dto.RequestWriteTodoInput;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,11 +32,11 @@ public class TodoEntity {
     private Long userId;
 
     @Builder
-    public TodoEntity(RequestTodoInput requestTodoInput) {
-        this.category = requestTodoInput.getCategory();
-        this.content = requestTodoInput.getContent();
-        this.createdAt = LocalDate.parse(requestTodoInput.getDate());
-        this.userId = requestTodoInput.getUserId();
+    public TodoEntity(RequestWriteTodoInput requestWriteTodoInput) {
+        this.category = requestWriteTodoInput.getCategory();
+        this.content = requestWriteTodoInput.getContent();
+        this.createdAt = LocalDate.parse(requestWriteTodoInput.getDate());
+        this.userId = requestWriteTodoInput.getUserId();
         this.isCompleted = 0;
     }
 
