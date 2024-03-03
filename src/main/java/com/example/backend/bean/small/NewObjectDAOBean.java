@@ -23,7 +23,7 @@ public class NewObjectDAOBean {
     // 할일 객체 생성
     public TodoEntity exec(RequestWriteTodoInput requestWriteTodoInput) {
         TodoEntity todoEntity = TodoEntity.builder()
-                                    .requestTodoInput(requestWriteTodoInput)
+                                    .requestWriteTodoInput(requestWriteTodoInput)
                                     .build();
         return todoEntity;
     }

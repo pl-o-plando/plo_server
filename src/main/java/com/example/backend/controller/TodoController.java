@@ -1,5 +1,6 @@
 package com.example.backend.controller;
 
+import com.example.backend.model.dto.RequestModifyTodoInput;
 import com.example.backend.model.dto.RequestWriteTodoInput;
 import com.example.backend.model.entity.TodoEntity;
 import com.example.backend.service.TodoService;
@@ -39,11 +40,9 @@ public class TodoController {
 
     @Operation(summary = "투두 수정", description = "투두 수정 성공 여부를 반환합니다.")
     @PostMapping("/todo/modify")
-    public ResponseEntity<Map<String, Object>> modifyTodo(@RequestParam("username") String username,
-                                                          @RequestParam("todo_id") Long todoId,
-                                                          @RequestBody RequestWriteTodoInput requestWriteTodoInput) {
+    public ResponseEntity<Map<String, Object>> modifyTodo(@RequestBody RequestModifyTodoInput requestModifyTodoInput) {
         // 회원가입 정보 받기
-        TodoEntity todoEntity = todoService.modifyTodoEntity(username, todoId, requestWriteTodoInput);
+        TodoEntity todoEntity = todoService.modifyTodoEntity(requestModifyTodoInput);
 
         // HTTP 상태 반환
         HttpStatus httpStatus = (todoEntity != null) ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR;

@@ -1,6 +1,7 @@
 package com.example.backend.service;
 
 import com.example.backend.bean.*;
+import com.example.backend.model.dto.RequestModifyTodoInput;
 import com.example.backend.model.dto.RequestWriteTodoInput;
 import com.example.backend.model.entity.TodoEntity;
 import lombok.RequiredArgsConstructor;
@@ -22,8 +23,8 @@ public class TodoService {
         return saveTodoBean.exec(requestWriteTodoInput);
     }
 
-    public TodoEntity modifyTodoEntity(String username, Long userId, RequestWriteTodoInput requestWriteTodoInput) {
-        return modifyTodoBean.exec(username, userId, requestWriteTodoInput);
+    public TodoEntity modifyTodoEntity(RequestModifyTodoInput requestModifyTodoInput) {
+        return modifyTodoBean.exec(requestModifyTodoInput);
     }
 
     public Long deleteTodoEntity(String username, Long todoId) {
