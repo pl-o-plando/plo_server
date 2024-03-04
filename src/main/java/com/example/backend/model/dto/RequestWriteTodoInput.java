@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class RequestWriteTodoInput {
     Long userId;
-    String category;
+    Long categoryId;
     String content;
     String date;
 }

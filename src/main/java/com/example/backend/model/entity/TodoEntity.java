@@ -22,7 +22,6 @@ public class TodoEntity {
     @Column(name = "todo_id")
     private Long id;
 
-    private String category;
     private String content;
     private int isCompleted;
 
@@ -30,20 +29,21 @@ public class TodoEntity {
     private LocalDate finishedAt;
 
     private Long userId;
+    private Long categoryId;
 
     @Builder
     public TodoEntity(RequestWriteTodoInput requestWriteTodoInput) {
-        this.category = requestWriteTodoInput.getCategory();
+        this.categoryId = requestWriteTodoInput.getCategoryId();
         this.content = requestWriteTodoInput.getContent();
         this.createdAt = LocalDate.parse(requestWriteTodoInput.getDate());
         this.userId = requestWriteTodoInput.getUserId();
         this.isCompleted = 0;
     }
 
-    public TodoEntity(String content, String category, Long userId, String date) {
+    public TodoEntity(String content, Long categoryId, Long userId, String date) {
         this.content = content;
         this.userId = userId;
-        this.category = category;
+        this.categoryId = categoryId;
         this.createdAt = LocalDate.parse(date);
     }
 }
