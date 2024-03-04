@@ -1,6 +1,7 @@
 package com.example.backend.controller;
 
 import com.example.backend.model.dto.RequestCreateRoutineInput;
+import com.example.backend.model.entity.CategoryEntity;
 import com.example.backend.model.entity.RoutineEntity;
 import com.example.backend.service.RoutineService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -48,5 +50,11 @@ public class RoutineController {
         requestMap.put("id", id);
 
         return ResponseEntity.status(httpStatus).body(requestMap);
+    }
+
+    @Operation(summary = "카테고리별 루틴 조회", description = "조회된 루틴 내역을 반환합니다.")
+    @GetMapping("/routine/list")
+    public List<RoutineEntity> searchByCategoryRoutine(@RequestParam("category_id") Long categoryId) {
+        return routineService.getRoutineEntityByCategoryId(categoryId);
     }
 }
