@@ -15,4 +15,9 @@ public class GetUserDAOBean {
     public UserEntity exec(RequestUserInput requestUserInput) {
         return userRepository.findByEmailAndPassword(requestUserInput.getEmail(), requestUserInput.getPassword());
     }
+
+    // 유저 아이디로 유저 찾기
+    public UserEntity exec(Long userId) {
+        return userRepository.getById(userId);
+    }
 }

@@ -1,7 +1,7 @@
 package com.example.backend.controller;
 
 import com.example.backend.model.dto.RequestCreateRoutineInput;
-import com.example.backend.model.entity.CategoryEntity;
+import com.example.backend.model.dto.RequestModifyRoutineInput;
 import com.example.backend.model.entity.RoutineEntity;
 import com.example.backend.service.RoutineService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -28,7 +28,7 @@ public class RoutineController {
         // HTTP 상태 반환
         HttpStatus httpStatus = (routineEntity != null) ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR;
 
-        // 메시지와 카테고리 데이터를 JSON 데이터로 반환
+        // 메시지와 루틴 데이터를 JSON 데이터로 반환
         Map<String, Object> requestMap = new HashMap<>();
         requestMap.put("message", (routineEntity != null) ? "Routine Create Success" : "Routine Create Fail");
         requestMap.put("routine", routineEntity);
@@ -56,5 +56,22 @@ public class RoutineController {
     @GetMapping("/routine/list")
     public List<RoutineEntity> searchByCategoryRoutine(@RequestParam("category_id") Long categoryId) {
         return routineService.getRoutineEntityByCategoryId(categoryId);
+    }
+
+    @Operation(summary = "루틴 수정", description = "루틴 수정 성공 여부를 반환합니다.")
+    @PostMapping("/routine/modify")
+    public ResponseEntity<Map<String, Object>> modifyCategory(@RequestBody RequestModifyRoutineInput requestModifyRoutineInput) {
+        // 루틴 정보 받기
+        RoutineEntity routineEntity = routineService.modifyRoutineEntity(requestModifyRoutineInput);
+
+        // HTTP 상태 반환
+        HttpStatus httpStatus = (routineEntity != null) ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR;
+
+        // 메시지와 루틴 데이터를 JSON 데이터로 반환
+        Map<String, Object> requestMap = new HashMap<>();
+        requestMap.put("message", (routineEntity != null) ? "Routine Modify Success" : "Routine Modify Fail");
+        requestMap.put("routine", routineEntity);
+
+        return ResponseEntity.status(httpStatus).body(requestMap);
     }
 }
