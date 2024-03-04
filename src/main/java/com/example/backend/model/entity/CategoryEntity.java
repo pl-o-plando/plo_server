@@ -28,4 +28,9 @@ public class CategoryEntity {
         this.userId = requestCreateCategoryInput.getUserId();
         this.category = requestCreateCategoryInput.getCategory();
     }
+
+    public CategoryEntity(Long userId, String category) {
+        this.userId = userId;
+        this.category = category;
+    }
 }
