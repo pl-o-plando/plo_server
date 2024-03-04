@@ -1,7 +1,9 @@
 package com.example.backend.bean.small;
 
+import com.example.backend.model.dto.RequestModifyCategoryInput;
 import com.example.backend.model.dto.RequestModifyTodoInput;
 import com.example.backend.model.dto.RequestModifyUserInput;
+import com.example.backend.model.entity.CategoryEntity;
 import com.example.backend.model.entity.TodoEntity;
 import com.example.backend.model.entity.UserEntity;
 import lombok.RequiredArgsConstructor;
@@ -36,5 +38,12 @@ public class ModifyObjectDAOBean {
         userEntity.setResolution(requestModifyUserInput.getResolution());
 
         return userEntity;
+    }
+
+    // 카테고리 객체의 값을 변경
+    public CategoryEntity exec(CategoryEntity categoryEntity, RequestModifyCategoryInput requestModifyCategoryInput) {
+        categoryEntity.setCategory(requestModifyCategoryInput.getCategory());
+
+        return categoryEntity;
     }
 }

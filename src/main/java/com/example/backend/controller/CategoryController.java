@@ -1,7 +1,10 @@
 package com.example.backend.controller;
 
 import com.example.backend.model.dto.RequestCreateCategoryInput;
+import com.example.backend.model.dto.RequestModifyCategoryInput;
+import com.example.backend.model.dto.RequestModifyUserInput;
 import com.example.backend.model.entity.CategoryEntity;
+import com.example.backend.model.entity.UserEntity;
 import com.example.backend.service.CategoryService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
@@ -55,5 +58,22 @@ public class CategoryController {
     @GetMapping("/category/list")
     public List<CategoryEntity> searchByUserTodo(@RequestParam("userId") Long userId) {
         return categoryService.getCategoryEntityByUserId(userId);
+    }
+
+    @Operation(summary = "카테고리 수정", description = "카테고리 수정 성공 여부를 반환합니다.")
+    @PostMapping("/category/modify")
+    public ResponseEntity<Map<String, Object>> modifyCategory(@RequestBody RequestModifyCategoryInput requestModifyCategoryInput) {
+        // 회원가입 정보 받기
+        CategoryEntity categoryEntity = categoryService.modifyCategoryEntity(requestModifyCategoryInput);
+
+        // HTTP 상태 반환
+        HttpStatus httpStatus = (categoryEntity != null) ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR;
+
+        // 메시지와 카테고리 데이터를 JSON 데이터로 반환
+        Map<String, Object> requestMap = new HashMap<>();
+        requestMap.put("message", (categoryEntity != null) ? "Category Modify Success" : "Category Modify Fail");
+        requestMap.put("category", categoryEntity);
+
+        return ResponseEntity.status(httpStatus).body(requestMap);
     }
 }
