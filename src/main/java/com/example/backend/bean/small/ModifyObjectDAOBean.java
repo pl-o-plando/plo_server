@@ -1,9 +1,11 @@
 package com.example.backend.bean.small;
 
 import com.example.backend.model.dto.RequestModifyCategoryInput;
+import com.example.backend.model.dto.RequestModifyRoutineInput;
 import com.example.backend.model.dto.RequestModifyTodoInput;
 import com.example.backend.model.dto.RequestModifyUserInput;
 import com.example.backend.model.entity.CategoryEntity;
+import com.example.backend.model.entity.RoutineEntity;
 import com.example.backend.model.entity.TodoEntity;
 import com.example.backend.model.entity.UserEntity;
 import lombok.RequiredArgsConstructor;
@@ -45,5 +47,12 @@ public class ModifyObjectDAOBean {
         categoryEntity.setCategory(requestModifyCategoryInput.getCategory());
 
         return categoryEntity;
+    }
+
+    // 루틴 객체의 값을 변경
+    public RoutineEntity exec(RoutineEntity routineEntity, RequestModifyRoutineInput requestModifyRoutineInput) {
+        routineEntity.setRoutine(requestModifyRoutineInput.getRoutine());
+
+        return routineEntity;
     }
 }
