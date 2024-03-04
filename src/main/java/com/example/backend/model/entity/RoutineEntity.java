@@ -1,6 +1,5 @@
 package com.example.backend.model.entity;
 
-import com.example.backend.model.dto.RequestCreateCategoryInput;
 import com.example.backend.model.dto.RequestCreateRoutineInput;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
