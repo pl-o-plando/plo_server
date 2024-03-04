@@ -16,15 +16,15 @@ import lombok.Setter;
 public class CategoryEntity {
     @Id
     @GeneratedValue
-    @Column(name = "todo_id")
+    @Column(name = "category_id")
     private Long id;
 
     private String category;
-    private String username;
+    private Long userId;
 
     @Builder
-    public CategoryEntity(String username, String category) {
-        this.username = username;
+    public CategoryEntity(Long userId, String category) {
+        this.userId = userId;
         this.category = category;
     }
 }

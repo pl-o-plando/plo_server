@@ -16,8 +16,8 @@ public class CategoryService {
     private final DeleteCategoryBean deleteCategoryBean;
     private final ShowCategoryBean showCategoryBean;
 
-    public CategoryEntity saveCategoryEntity(String username, String category) {
-        return saveCategoryBean.exec(username, category);
+    public CategoryEntity saveCategoryEntity(Long userId, String category) {
+        return saveCategoryBean.exec(userId, category);
     }
 
     public Long deleteCategoryEntity(Long categoryId) {

@@ -29,9 +29,9 @@ public class NewObjectDAOBean {
     }
 
     // 카테고리 객체 생성
-    public CategoryEntity exec(String username, String category) {
+    public CategoryEntity exec(Long userId, String category) {
         CategoryEntity categoryEntity = CategoryEntity.builder()
-                                            .username(username)
+                                            .userId(userId)
                                             .category(category)
                                             .build();
         return  categoryEntity;

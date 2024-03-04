@@ -10,13 +10,12 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class SaveCategoryBean {
-    private final CheckDAOBean checkDAOBean;
     private final SaveDAOBean saveDAOBean;
     private final NewObjectDAOBean newObjectDAOBean;
 
-    public CategoryEntity exec(String username, String category) {
+    public CategoryEntity exec(Long userId, String category) {
 
-        CategoryEntity categoryEntity = newObjectDAOBean.exec(username, category);
+        CategoryEntity categoryEntity = newObjectDAOBean.exec(userId, category);
         saveDAOBean.exec(categoryEntity);
 
         return  categoryEntity;
