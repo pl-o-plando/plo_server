@@ -27,8 +27,8 @@ public class TodoService {
         return modifyTodoBean.exec(requestModifyTodoInput);
     }
 
-    public Long deleteTodoEntity(String username, Long todoId) {
-        return deleteTodoBean.exec(username, todoId);
+    public Long deleteTodoEntity(Long todoId) {
+        return deleteTodoBean.exec(todoId);
     }
 
     public List<TodoEntity> getTodoEntityByUser(String username) {

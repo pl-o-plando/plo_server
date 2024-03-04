@@ -57,8 +57,8 @@ public class TodoController {
 
     @Operation(summary = "투두 삭제", description = "투두 삭제 성공 여부를 반환합니다.")
     @DeleteMapping("/todo/delete")
-    public ResponseEntity<Map<String, Object>> deleteTodo(@RequestParam("username") String username, @RequestParam("todo_id") Long todoId) {
-        Long id = todoService.deleteTodoEntity(username, todoId);
+    public ResponseEntity<Map<String, Object>> deleteTodo(@RequestParam("todo_id") Long todoId) {
+        Long id = todoService.deleteTodoEntity(todoId);
 
         // HTTP 상태 반환
         HttpStatus httpStatus = (id != null) ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR;
