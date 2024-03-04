@@ -18,6 +18,6 @@ public class SaveCategoryBean {
         CategoryEntity categoryEntity = newObjectDAOBean.exec(requestCreateCategoryInput);
         saveDAOBean.exec(categoryEntity);
 
-        return  categoryEntity;
+        return categoryEntity;
     }
 }
