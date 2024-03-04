@@ -1,5 +1,6 @@
 package com.example.backend.model.entity;
 
+import com.example.backend.model.dto.RequestCreateCategoryInput;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,8 +24,8 @@ public class CategoryEntity {
     private Long userId;
 
     @Builder
-    public CategoryEntity(Long userId, String category) {
-        this.userId = userId;
-        this.category = category;
+    public CategoryEntity(RequestCreateCategoryInput requestCreateCategoryInput) {
+        this.userId = requestCreateCategoryInput.getUserId();
+        this.category = requestCreateCategoryInput.getCategory();
     }
 }

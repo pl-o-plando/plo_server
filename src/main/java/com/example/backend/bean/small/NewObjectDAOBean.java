@@ -1,5 +1,6 @@
 package com.example.backend.bean.small;
 
+import com.example.backend.model.dto.RequestCreateCategoryInput;
 import com.example.backend.model.dto.RequestWriteTodoInput;
 import com.example.backend.model.dto.RequestUserSignup;
 import com.example.backend.model.entity.CategoryEntity;
@@ -29,10 +30,9 @@ public class NewObjectDAOBean {
     }
 
     // 카테고리 객체 생성
-    public CategoryEntity exec(Long userId, String category) {
+    public CategoryEntity exec(RequestCreateCategoryInput requestCreateCategoryInput) {
         CategoryEntity categoryEntity = CategoryEntity.builder()
-                                            .userId(userId)
-                                            .category(category)
+                                            .requestCreateCategoryInput(requestCreateCategoryInput)
                                             .build();
         return  categoryEntity;
     }

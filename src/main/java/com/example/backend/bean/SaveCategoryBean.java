@@ -1,8 +1,8 @@
 package com.example.backend.bean;
 
-import com.example.backend.bean.small.CheckDAOBean;
 import com.example.backend.bean.small.NewObjectDAOBean;
 import com.example.backend.bean.small.SaveDAOBean;
+import com.example.backend.model.dto.RequestCreateCategoryInput;
 import com.example.backend.model.entity.CategoryEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -13,9 +13,9 @@ public class SaveCategoryBean {
     private final SaveDAOBean saveDAOBean;
     private final NewObjectDAOBean newObjectDAOBean;
 
-    public CategoryEntity exec(Long userId, String category) {
+    public CategoryEntity exec(RequestCreateCategoryInput requestCreateCategoryInput) {
 
-        CategoryEntity categoryEntity = newObjectDAOBean.exec(userId, category);
+        CategoryEntity categoryEntity = newObjectDAOBean.exec(requestCreateCategoryInput);
         saveDAOBean.exec(categoryEntity);
 
         return  categoryEntity;

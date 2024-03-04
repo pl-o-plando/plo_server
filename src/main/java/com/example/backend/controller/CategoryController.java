@@ -1,5 +1,6 @@
 package com.example.backend.controller;
 
+import com.example.backend.model.dto.RequestCreateCategoryInput;
 import com.example.backend.model.entity.CategoryEntity;
 import com.example.backend.service.CategoryService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -19,9 +20,9 @@ public class CategoryController {
 
     @Operation(summary = "카테고리 추가", description = "카테고리 추가 성공 여부를 반환합니다.")
     @PostMapping("/category/create")
-    public ResponseEntity<Map<String, Object>> createCategory(@RequestParam("userId") Long userId, @RequestParam("category") String category) {
+    public ResponseEntity<Map<String, Object>> createCategory(@RequestBody RequestCreateCategoryInput requestCreateCategoryInput) {
         // 카테고리 저장하기
-        CategoryEntity categoryEntity = categoryService.saveCategoryEntity(userId, category);
+        CategoryEntity categoryEntity = categoryService.saveCategoryEntity(requestCreateCategoryInput);
 
         // HTTP 상태 반환
         HttpStatus httpStatus = (categoryEntity != null) ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR;
