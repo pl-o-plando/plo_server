@@ -2,6 +2,7 @@ package com.example.backend.controller;
 
 import com.example.backend.model.dto.RequestModifyTodoInput;
 import com.example.backend.model.dto.RequestWriteTodoInput;
+import com.example.backend.model.dto.RequestChangeStateTodoInput;
 import com.example.backend.model.entity.TodoEntity;
 import com.example.backend.service.TodoService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -86,10 +87,8 @@ public class TodoController {
 
     @Operation(summary = "투두 상태 변경", description = "투두 상태 변경 성공 여부를 반환합니다.")
     @PostMapping("/todo/state")
-    public ResponseEntity<Map<String, Object>> changeStateTodo(@RequestParam("username") String username,
-                                                               @RequestParam("todo_id") Long todoId,
-                                                               @RequestParam("isCompleted") int isCompleted) {
-        TodoEntity todoEntity = todoService.changeStateTodoEntity(username, todoId, isCompleted);
+    public ResponseEntity<Map<String, Object>> changeStateTodo(@RequestBody RequestChangeStateTodoInput requestChangeStateTodoInput) {
+        TodoEntity todoEntity = todoService.changeStateTodoEntity(requestChangeStateTodoInput);
 
         // HTTP 상태 반환
         HttpStatus httpStatus = (todoEntity != null) ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR;

@@ -1,6 +1,7 @@
 package com.example.backend.service;
 
 import com.example.backend.bean.*;
+import com.example.backend.model.dto.RequestChangeStateTodoInput;
 import com.example.backend.model.dto.RequestModifyTodoInput;
 import com.example.backend.model.dto.RequestWriteTodoInput;
 import com.example.backend.model.entity.TodoEntity;
@@ -39,7 +40,7 @@ public class TodoService {
         return showTodoBean.exec(userId, date);
     }
 
-    public TodoEntity changeStateTodoEntity(String username, Long userId, int isCompleted) {
-        return changeStateTodoBean.exec(username, userId, isCompleted);
+    public TodoEntity changeStateTodoEntity(RequestChangeStateTodoInput requestChangeStateTodoInput) {
+        return changeStateTodoBean.exec(requestChangeStateTodoInput);
     }
 }
