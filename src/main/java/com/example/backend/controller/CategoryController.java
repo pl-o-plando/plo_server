@@ -52,7 +52,7 @@ public class CategoryController {
 
     @Operation(summary = "유저별 카테고리 조회", description = "조회된 카테고리 내역을 반환합니다.")
     @GetMapping("/category/list")
-    public List<CategoryEntity> searchByUserTodo(@RequestParam("username") String username) {
-        return categoryService.getCategoryEntityByUsername(username);
+    public List<CategoryEntity> searchByUserTodo(@RequestParam("userId") Long userId) {
+        return categoryService.getCategoryEntityByUserId(userId);
     }
 }

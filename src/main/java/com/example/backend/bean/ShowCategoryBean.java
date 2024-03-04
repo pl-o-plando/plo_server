@@ -11,7 +11,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ShowCategoryBean {
     private final GetCategoryDAOsBean getCategoryDAOsBean;
-    public List<CategoryEntity> exec(String username) {
-        return getCategoryDAOsBean.exec(username);
+    public List<CategoryEntity> exec(Long userId) {
+        return getCategoryDAOsBean.exec(userId);
     }
 }

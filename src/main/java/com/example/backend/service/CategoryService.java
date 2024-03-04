@@ -24,7 +24,7 @@ public class CategoryService {
         return deleteCategoryBean.exec(categoryId);
     }
 
-    public List<CategoryEntity> getCategoryEntityByUsername(String username) {
-        return showCategoryBean.exec(username);
+    public List<CategoryEntity> getCategoryEntityByUserId(Long userId) {
+        return showCategoryBean.exec(userId);
     }
 }
