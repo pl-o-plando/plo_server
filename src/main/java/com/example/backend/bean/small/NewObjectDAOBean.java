@@ -1,9 +1,11 @@
 package com.example.backend.bean.small;
 
 import com.example.backend.model.dto.RequestCreateCategoryInput;
+import com.example.backend.model.dto.RequestCreateRoutineInput;
 import com.example.backend.model.dto.RequestWriteTodoInput;
 import com.example.backend.model.dto.RequestUserSignup;
 import com.example.backend.model.entity.CategoryEntity;
+import com.example.backend.model.entity.RoutineEntity;
 import com.example.backend.model.entity.TodoEntity;
 import com.example.backend.model.entity.UserEntity;
 import lombok.RequiredArgsConstructor;
@@ -42,5 +44,13 @@ public class NewObjectDAOBean {
         CategoryEntity categoryEntity = new CategoryEntity(userId, category);
 
         return  categoryEntity;
+    }
+
+    // 루틴 객체 생성
+    public RoutineEntity exec(RequestCreateRoutineInput requestCreateRoutineInput) {
+        RoutineEntity routineEntity = RoutineEntity.builder()
+                                            .requestCreateRoutineInput(requestCreateRoutineInput)
+                                            .build();
+        return routineEntity;
     }
 }
