@@ -6,7 +6,7 @@ import lombok.Data;
 public class RequestModifyTodoInput {
     Long userId;
     Long todoId;
-    String category;
+    Long categoryId;
     String content;
     String date;
 }
