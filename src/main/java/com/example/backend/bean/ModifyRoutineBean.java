@@ -1,9 +1,7 @@
 package com.example.backend.bean;
 
 import com.example.backend.bean.small.*;
-import com.example.backend.model.dto.RequestModifyCategoryInput;
 import com.example.backend.model.dto.RequestModifyRoutineInput;
-import com.example.backend.model.entity.CategoryEntity;
 import com.example.backend.model.entity.RoutineEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

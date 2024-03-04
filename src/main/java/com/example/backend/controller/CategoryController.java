@@ -2,9 +2,7 @@ package com.example.backend.controller;
 
 import com.example.backend.model.dto.RequestCreateCategoryInput;
 import com.example.backend.model.dto.RequestModifyCategoryInput;
-import com.example.backend.model.dto.RequestModifyUserInput;
 import com.example.backend.model.entity.CategoryEntity;
-import com.example.backend.model.entity.UserEntity;
 import com.example.backend.service.CategoryService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
@@ -63,7 +61,7 @@ public class CategoryController {
     @Operation(summary = "카테고리 수정", description = "카테고리 수정 성공 여부를 반환합니다.")
     @PostMapping("/category/modify")
     public ResponseEntity<Map<String, Object>> modifyCategory(@RequestBody RequestModifyCategoryInput requestModifyCategoryInput) {
-        // 회원가입 정보 받기
+        // 카테고리 정보 받기
         CategoryEntity categoryEntity = categoryService.modifyCategoryEntity(requestModifyCategoryInput);
 
         // HTTP 상태 반환

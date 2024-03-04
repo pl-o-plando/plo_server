@@ -6,9 +6,7 @@ import com.example.backend.bean.SaveCategoryBean;
 import com.example.backend.bean.ShowCategoryBean;
 import com.example.backend.model.dto.RequestCreateCategoryInput;
 import com.example.backend.model.dto.RequestModifyCategoryInput;
-import com.example.backend.model.dto.RequestModifyUserInput;
 import com.example.backend.model.entity.CategoryEntity;
-import com.example.backend.model.entity.UserEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -2,16 +2,13 @@ package com.example.backend.bean;
 
 import com.example.backend.bean.small.*;
 import com.example.backend.model.dto.RequestModifyCategoryInput;
-import com.example.backend.model.dto.RequestModifyTodoInput;
 import com.example.backend.model.entity.CategoryEntity;
-import com.example.backend.model.entity.TodoEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
 public class ModifyCategoryBean {
-    private final CheckDAOBean checkDAOBean;
     private final GetCategoryDAOBean getCategoryDAOBean;
     private final ModifyObjectDAOBean modifyObjectDAOBean;
     private final SaveDAOBean saveDAOBean;

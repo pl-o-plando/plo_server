@@ -42,7 +42,7 @@ public class TodoController {
     @Operation(summary = "투두 수정", description = "투두 수정 성공 여부를 반환합니다.")
     @PostMapping("/todo/modify")
     public ResponseEntity<Map<String, Object>> modifyTodo(@RequestBody RequestModifyTodoInput requestModifyTodoInput) {
-        // 회원가입 정보 받기
+        // 투두 정보 받기
         TodoEntity todoEntity = todoService.modifyTodoEntity(requestModifyTodoInput);
 
         // HTTP 상태 반환

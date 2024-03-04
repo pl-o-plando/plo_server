@@ -1,10 +1,8 @@
 package com.example.backend.controller;
 
-import com.example.backend.model.dto.RequestModifyTodoInput;
 import com.example.backend.model.dto.RequestModifyUserInput;
 import com.example.backend.model.dto.RequestUserInput;
 import com.example.backend.model.dto.RequestUserSignup;
-import com.example.backend.model.entity.TodoEntity;
 import com.example.backend.model.entity.UserEntity;
 import com.example.backend.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -66,7 +64,7 @@ public class UserController {
         // HTTP 상태 반환
         HttpStatus httpStatus = (userEntity != null) ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR;
 
-        // 메시지와 할일 데이터를 JSON 데이터로 반환
+        // 메시지와 유저 데이터를 JSON 데이터로 반환
         Map<String, Object> requestMap = new HashMap<>();
         requestMap.put("message", (userEntity != null) ? "User Modify Success" : "User Modify Fail");
         requestMap.put("user", userEntity);
