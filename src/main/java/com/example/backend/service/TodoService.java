@@ -35,8 +35,8 @@ public class TodoService {
         return showTodoBean.exec(userId);
     }
 
-    public List<TodoEntity> getTodoEntityByDate(String username, LocalDate date) {
-        return showTodoBean.exec(username, date);
+    public List<TodoEntity> getTodoEntityByDate(Long userId, LocalDate date) {
+        return showTodoBean.exec(userId, date);
     }
 
     public TodoEntity changeStateTodoEntity(String username, Long userId, int isCompleted) {

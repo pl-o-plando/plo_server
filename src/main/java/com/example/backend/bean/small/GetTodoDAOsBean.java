@@ -15,10 +15,10 @@ public class GetTodoDAOsBean {
     private final TodoRepository todoRepository;
 
     public List<TodoEntity> exec(Long userId) {
-        return new ArrayList<>(todoRepository.findByUserid(userId));
+        return new ArrayList<>(todoRepository.findByUserId(userId));
     }
 
-    public List<TodoEntity> exec(String username, LocalDate date) {
-        return new ArrayList<>(todoRepository.findByUsernameAndCreatedAt(username, date));
+    public List<TodoEntity> exec(Long userId, LocalDate date) {
+        return new ArrayList<>(todoRepository.findByUserIdAndCreatedAt(userId, date));
     }
 }

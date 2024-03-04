@@ -79,9 +79,9 @@ public class TodoController {
 
     @Operation(summary = "특정 유저의 날짜별 투두 조회", description = "조회된 투두 내역을 반환합니다.")
     @GetMapping("/todo/list")
-    public List<TodoEntity> searchByDateTodo(@RequestParam("username") String username,
+    public List<TodoEntity> searchByDateTodo(@RequestParam("userId") Long userId,
                                              @RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
-        return todoService.getTodoEntityByDate(username, date);
+        return todoService.getTodoEntityByDate(userId, date);
     }
 
     @Operation(summary = "투두 상태 변경", description = "투두 상태 변경 성공 여부를 반환합니다.")

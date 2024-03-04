@@ -17,7 +17,7 @@ public class ShowTodoBean {
         return getTodoDAOsBean.exec(userId);
     }
 
-    public List<TodoEntity> exec(String username, LocalDate date) {
-        return getTodoDAOsBean.exec(username, date);
+    public List<TodoEntity> exec(Long userId, LocalDate date) {
+        return getTodoDAOsBean.exec(userId, date);
     }
 }
