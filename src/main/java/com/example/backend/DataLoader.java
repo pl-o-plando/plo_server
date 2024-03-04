@@ -19,7 +19,7 @@ public class DataLoader implements CommandLineRunner {
         UserEntity userEntity = new UserEntity("string", "string", "string");
         userRepository.save(userEntity);
 
-        TodoEntity todoEntity = new TodoEntity("string", "string", "string", "2024-02-24");
+        TodoEntity todoEntity = new TodoEntity("string", "string", Long.parseLong("1"), "2024-02-24");
         todoRepository.save(todoEntity);
     }
 }

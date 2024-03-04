@@ -7,5 +7,4 @@ public class RequestUserSignup {
     String email;
     String username;
     String password;
-    String re_password;
 }

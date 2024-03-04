@@ -1,6 +1,6 @@
 package com.example.backend.bean.small;
 
-import com.example.backend.model.dto.RequestTodoInput;
+import com.example.backend.model.dto.RequestWriteTodoInput;
 import com.example.backend.model.dto.RequestUserSignup;
 import com.example.backend.model.entity.CategoryEntity;
 import com.example.backend.model.entity.TodoEntity;
@@ -21,10 +21,9 @@ public class NewObjectDAOBean {
     }
 
     // 할일 객체 생성
-    public TodoEntity exec(String username, RequestTodoInput requestTodoInput) {
+    public TodoEntity exec(RequestWriteTodoInput requestWriteTodoInput) {
         TodoEntity todoEntity = TodoEntity.builder()
-                                    .requestTodoInput(requestTodoInput)
-                                    .username(username)
+                                    .requestWriteTodoInput(requestWriteTodoInput)
                                     .build();
         return todoEntity;
     }

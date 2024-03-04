@@ -1,6 +1,6 @@
 package com.example.backend.bean.small;
 
-import com.example.backend.model.dto.RequestTodoInput;
+import com.example.backend.model.dto.RequestModifyTodoInput;
 import com.example.backend.model.entity.TodoEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -11,10 +11,10 @@ import java.time.LocalDate;
 @RequiredArgsConstructor
 public class ModifyObjectDAOBean {
 
-    public TodoEntity exec(TodoEntity todoEntity, RequestTodoInput requestTodoInput) {
-        todoEntity.setCategory(requestTodoInput.getCategory());
-        todoEntity.setContent(requestTodoInput.getContent());
-        todoEntity.setCreatedAt(LocalDate.parse(requestTodoInput.getDate()));
+    public TodoEntity exec(TodoEntity todoEntity, RequestModifyTodoInput requestModifyTodoInput) {
+        todoEntity.setCategory(requestModifyTodoInput.getCategory());
+        todoEntity.setContent(requestModifyTodoInput.getContent());
+        todoEntity.setCreatedAt(LocalDate.parse(requestModifyTodoInput.getDate()));
 
         return todoEntity;
     }

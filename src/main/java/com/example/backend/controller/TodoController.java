@@ -1,6 +1,8 @@
 package com.example.backend.controller;
 
-import com.example.backend.model.dto.RequestTodoInput;
+import com.example.backend.model.dto.RequestModifyTodoInput;
+import com.example.backend.model.dto.RequestWriteTodoInput;
+import com.example.backend.model.dto.RequestChangeStateTodoInput;
 import com.example.backend.model.entity.TodoEntity;
 import com.example.backend.service.TodoService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -22,9 +24,9 @@ public class TodoController {
 
     @Operation(summary = "투두 작성", description = "투두 작성 성공 여부를 반환합니다.")
     @PostMapping("/todo/write")
-    public ResponseEntity<Map<String, Object>> writeTodo(@RequestParam("username") String username, @RequestBody RequestTodoInput requestTodoInput) {
+    public ResponseEntity<Map<String, Object>> writeTodo(@RequestBody RequestWriteTodoInput requestWriteTodoInput) {
         // 할일 저장하기
-        TodoEntity todoEntity = todoService.saveTodoEntity(username, requestTodoInput);
+        TodoEntity todoEntity = todoService.saveTodoEntity(requestWriteTodoInput);
 
         // HTTP 상태 반환
         HttpStatus httpStatus = (todoEntity != null) ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR;
@@ -39,11 +41,9 @@ public class TodoController {
 
     @Operation(summary = "투두 수정", description = "투두 수정 성공 여부를 반환합니다.")
     @PostMapping("/todo/modify")
-    public ResponseEntity<Map<String, Object>> modifyTodo(@RequestParam("username") String username,
-                                                          @RequestParam("todo_id") Long todoId,
-                                                          @RequestBody RequestTodoInput requestTodoInput) {
+    public ResponseEntity<Map<String, Object>> modifyTodo(@RequestBody RequestModifyTodoInput requestModifyTodoInput) {
         // 회원가입 정보 받기
-        TodoEntity todoEntity = todoService.modifyTodoEntity(username, todoId, requestTodoInput);
+        TodoEntity todoEntity = todoService.modifyTodoEntity(requestModifyTodoInput);
 
         // HTTP 상태 반환
         HttpStatus httpStatus = (todoEntity != null) ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR;
@@ -58,8 +58,8 @@ public class TodoController {
 
     @Operation(summary = "투두 삭제", description = "투두 삭제 성공 여부를 반환합니다.")
     @DeleteMapping("/todo/delete")
-    public ResponseEntity<Map<String, Object>> deleteTodo(@RequestParam("username") String username, @RequestParam("todo_id") Long todoId) {
-        Long id = todoService.deleteTodoEntity(username, todoId);
+    public ResponseEntity<Map<String, Object>> deleteTodo(@RequestParam("todo_id") Long todoId) {
+        Long id = todoService.deleteTodoEntity(todoId);
 
         // HTTP 상태 반환
         HttpStatus httpStatus = (id != null) ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR;
@@ -74,23 +74,21 @@ public class TodoController {
 
     @Operation(summary = "유저별 투두 조회", description = "조회된 투두 내역을 반환합니다.")
     @GetMapping("/todo/list/test")
-    public List<TodoEntity> searchByUserTodo(@RequestParam("username") String username) {
-        return todoService.getTodoEntityByUser(username);
+    public List<TodoEntity> searchByUserTodo(@RequestParam("userId") Long userId) {
+        return todoService.getTodoEntityByUser(userId);
     }
 
     @Operation(summary = "특정 유저의 날짜별 투두 조회", description = "조회된 투두 내역을 반환합니다.")
     @GetMapping("/todo/list")
-    public List<TodoEntity> searchByDateTodo(@RequestParam("username") String username,
+    public List<TodoEntity> searchByDateTodo(@RequestParam("userId") Long userId,
                                              @RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
-        return todoService.getTodoEntityByDate(username, date);
+        return todoService.getTodoEntityByDate(userId, date);
     }
 
     @Operation(summary = "투두 상태 변경", description = "투두 상태 변경 성공 여부를 반환합니다.")
     @PostMapping("/todo/state")
-    public ResponseEntity<Map<String, Object>> changeStateTodo(@RequestParam("username") String username,
-                                                               @RequestParam("todo_id") Long todoId,
-                                                               @RequestParam("isCompleted") int isCompleted) {
-        TodoEntity todoEntity = todoService.changeStateTodoEntity(username, todoId, isCompleted);
+    public ResponseEntity<Map<String, Object>> changeStateTodo(@RequestBody RequestChangeStateTodoInput requestChangeStateTodoInput) {
+        TodoEntity todoEntity = todoService.changeStateTodoEntity(requestChangeStateTodoInput);
 
         // HTTP 상태 반환
         HttpStatus httpStatus = (todoEntity != null) ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR;

@@ -1,6 +1,6 @@
 package com.example.backend.model.entity;
 
-import com.example.backend.model.dto.RequestTodoInput;
+import com.example.backend.model.dto.RequestWriteTodoInput;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,20 +29,20 @@ public class TodoEntity {
     private LocalDate createdAt;
     private LocalDate finishedAt;
 
-    private String username;
+    private Long userId;
 
     @Builder
-    public TodoEntity(String username, RequestTodoInput requestTodoInput) {
-        this.category = requestTodoInput.getCategory();
-        this.content = requestTodoInput.getContent();
-        this.createdAt = LocalDate.parse(requestTodoInput.getDate());
-        this.username = username;
+    public TodoEntity(RequestWriteTodoInput requestWriteTodoInput) {
+        this.category = requestWriteTodoInput.getCategory();
+        this.content = requestWriteTodoInput.getContent();
+        this.createdAt = LocalDate.parse(requestWriteTodoInput.getDate());
+        this.userId = requestWriteTodoInput.getUserId();
         this.isCompleted = 0;
     }
 
-    public TodoEntity(String content, String category, String username, String date) {
+    public TodoEntity(String content, String category, Long userId, String date) {
         this.content = content;
-        this.username = username;
+        this.userId = userId;
         this.category = category;
         this.createdAt = LocalDate.parse(date);
     }
