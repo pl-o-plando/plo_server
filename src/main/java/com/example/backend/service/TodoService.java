@@ -31,8 +31,8 @@ public class TodoService {
         return deleteTodoBean.exec(todoId);
     }
 
-    public List<TodoEntity> getTodoEntityByUser(String username) {
-        return showTodoBean.exec(username);
+    public List<TodoEntity> getTodoEntityByUser(Long userId) {
+        return showTodoBean.exec(userId);
     }
 
     public List<TodoEntity> getTodoEntityByDate(String username, LocalDate date) {

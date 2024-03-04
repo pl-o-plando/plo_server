@@ -14,8 +14,8 @@ import java.util.List;
 public class GetTodoDAOsBean {
     private final TodoRepository todoRepository;
 
-    public List<TodoEntity> exec(String username) {
-        return new ArrayList<>(todoRepository.findByUsername(username));
+    public List<TodoEntity> exec(Long userId) {
+        return new ArrayList<>(todoRepository.findByUserid(userId));
     }
 
     public List<TodoEntity> exec(String username, LocalDate date) {

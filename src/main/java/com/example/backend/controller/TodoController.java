@@ -73,8 +73,8 @@ public class TodoController {
 
     @Operation(summary = "유저별 투두 조회", description = "조회된 투두 내역을 반환합니다.")
     @GetMapping("/todo/list/test")
-    public List<TodoEntity> searchByUserTodo(@RequestParam("username") String username) {
-        return todoService.getTodoEntityByUser(username);
+    public List<TodoEntity> searchByUserTodo(@RequestParam("userId") Long userId) {
+        return todoService.getTodoEntityByUser(userId);
     }
 
     @Operation(summary = "특정 유저의 날짜별 투두 조회", description = "조회된 투두 내역을 반환합니다.")

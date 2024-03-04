@@ -13,8 +13,8 @@ import java.util.List;
 public class ShowTodoBean {
     private final GetTodoDAOsBean getTodoDAOsBean;
 
-    public List<TodoEntity> exec(String username) {
-        return getTodoDAOsBean.exec(username);
+    public List<TodoEntity> exec(Long userId) {
+        return getTodoDAOsBean.exec(userId);
     }
 
     public List<TodoEntity> exec(String username, LocalDate date) {
