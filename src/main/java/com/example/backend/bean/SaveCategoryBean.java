@@ -15,7 +15,6 @@ public class SaveCategoryBean {
     private final NewObjectDAOBean newObjectDAOBean;
 
     public CategoryEntity exec(String username, String category) {
-        if(checkDAOBean.exec(username)) return null;
 
         CategoryEntity categoryEntity = newObjectDAOBean.exec(username, category);
         saveDAOBean.exec(categoryEntity);
