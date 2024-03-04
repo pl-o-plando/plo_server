@@ -1,7 +1,6 @@
 package com.example.backend.controller;
 
 import com.example.backend.model.dto.RequestCreateRoutineInput;
-import com.example.backend.model.entity.CategoryEntity;
 import com.example.backend.model.entity.RoutineEntity;
 import com.example.backend.service.RoutineService;
 import io.swagger.v3.oas.annotations.Operation;
