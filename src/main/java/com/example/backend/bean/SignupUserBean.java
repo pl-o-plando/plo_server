@@ -17,11 +17,12 @@ public class SignupUserBean {
     private final CheckDAOBean checkDAOBean;
 
     public UserEntity exec(RequestUserSignup requestUserSignup) {
-        if(!checkDAOBean.exec(requestUserSignup.getEmail(), requestUserSignup.getUsername())) return null;
+        if(!checkDAOBean.exec(requestUserSignup.getEmail())) return null;
 
         UserEntity createUser = newObjectDAOBean.exec(requestUserSignup);
         saveDAOBean.exec(createUser);
 
+        // 유저 생성시 기본 카테고리 제공
         CategoryEntity categoryEntity = newObjectDAOBean.exec(createUser.getId(), "카테고리1");
         saveDAOBean.exec(categoryEntity);
 
