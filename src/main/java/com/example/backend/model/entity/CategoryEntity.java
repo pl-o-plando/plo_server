@@ -1,5 +1,6 @@
 package com.example.backend.model.entity;
 
+import com.example.backend.model.dto.RequestCreateCategoryInput;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,15 +17,20 @@ import lombok.Setter;
 public class CategoryEntity {
     @Id
     @GeneratedValue
-    @Column(name = "todo_id")
+    @Column(name = "category_id")
     private Long id;
 
     private String category;
-    private String username;
+    private Long userId;
 
     @Builder
-    public CategoryEntity(String username, String category) {
-        this.username = username;
+    public CategoryEntity(RequestCreateCategoryInput requestCreateCategoryInput) {
+        this.userId = requestCreateCategoryInput.getUserId();
+        this.category = requestCreateCategoryInput.getCategory();
+    }
+
+    public CategoryEntity(Long userId, String category) {
+        this.userId = userId;
         this.category = category;
     }
 }

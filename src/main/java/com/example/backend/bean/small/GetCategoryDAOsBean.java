@@ -13,7 +13,7 @@ import java.util.List;
 public class GetCategoryDAOsBean {
     private final CategoryRepository categoryRepository;
 
-    public List<CategoryEntity> exec(String username) {
-        return new ArrayList<>(categoryRepository.findByUsername(username));
+    public List<CategoryEntity> exec(Long userId) {
+        return new ArrayList<>(categoryRepository.findByUserId(userId));
     }
 }

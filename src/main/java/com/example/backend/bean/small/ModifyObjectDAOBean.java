@@ -12,7 +12,7 @@ import java.time.LocalDate;
 public class ModifyObjectDAOBean {
 
     public TodoEntity exec(TodoEntity todoEntity, RequestModifyTodoInput requestModifyTodoInput) {
-        todoEntity.setCategory(requestModifyTodoInput.getCategory());
+        todoEntity.setCategoryId(requestModifyTodoInput.getCategoryId());
         todoEntity.setContent(requestModifyTodoInput.getContent());
         todoEntity.setCreatedAt(LocalDate.parse(requestModifyTodoInput.getDate()));
 
