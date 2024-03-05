@@ -18,6 +18,6 @@ public class GetUserDAOBean {
 
     // 유저 아이디로 유저 찾기
     public UserEntity exec(Long userId) {
-        return userRepository.getById(userId);
+        return userRepository.findById(userId).get();
     }
 }
