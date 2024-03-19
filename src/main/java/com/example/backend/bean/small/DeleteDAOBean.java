@@ -4,10 +4,7 @@ import com.example.backend.model.entity.CategoryEntity;
 import com.example.backend.model.entity.RoutineEntity;
 import com.example.backend.model.entity.TodoEntity;
 import com.example.backend.model.entity.UserEntity;
-import com.example.backend.repository.CategoryRepository;
-import com.example.backend.repository.RoutineRepository;
-import com.example.backend.repository.TodoRepository;
-import com.example.backend.repository.UserRepository;
+import com.example.backend.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

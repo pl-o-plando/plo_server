@@ -1,10 +1,7 @@
 package com.example.backend.bean.small;
 
 import com.example.backend.model.dto.*;
-import com.example.backend.model.entity.CategoryEntity;
-import com.example.backend.model.entity.RoutineEntity;
-import com.example.backend.model.entity.TodoEntity;
-import com.example.backend.model.entity.UserEntity;
+import com.example.backend.model.entity.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -75,6 +72,7 @@ public class NewObjectDAOBean {
         return responseTodoByCategory;
     }
 
+    // 간단 추두 정보 객체 생성
     public ResponseSimpleTodo exec(TodoEntity todoEntity) {
         ResponseSimpleTodo responseSimpleTodo = new ResponseSimpleTodo();
         responseSimpleTodo.setTodoId(todoEntity.getId());

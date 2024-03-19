@@ -3,6 +3,7 @@ package com.example.backend.bean.small;
 import com.example.backend.model.dto.ResponseSimpleTodo;
 import com.example.backend.model.dto.ResponseTodoByCategory;
 import com.example.backend.model.entity.CategoryEntity;
+import com.example.backend.model.entity.DeleteCategoryEntity;
 import com.example.backend.model.entity.TodoEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -25,5 +26,9 @@ public class ChangeDAOBean {
         return list.stream()
                 .map(todoEntity -> newObjectDAOBean.exec(todoEntity))
                 .collect(Collectors.toList());
+    }
+
+    public DeleteCategoryEntity exec(CategoryEntity categoryEntity) {
+        return  new DeleteCategoryEntity(categoryEntity.getId(), categoryEntity.getCategory(), categoryEntity.getUserId());
     }
 }
