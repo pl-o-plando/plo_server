@@ -16,10 +16,9 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        UserEntity userEntity = new UserEntity("string", "string", "string");
-        userRepository.save(userEntity);
+        userRepository.save(new UserEntity("string", "string", "string"));
 
-        TodoEntity todoEntity = new TodoEntity("string", Long.parseLong("1"), Long.parseLong("1"), "2024-02-24");
-        todoRepository.save(todoEntity);
+        todoRepository.save(new TodoEntity("string1", Long.parseLong("1"), Long.parseLong("1"), "2024-02-24"));
+        todoRepository.save(new TodoEntity("string2", Long.parseLong("1"), Long.parseLong("1"), "2024-02-24"));
     }
 }
