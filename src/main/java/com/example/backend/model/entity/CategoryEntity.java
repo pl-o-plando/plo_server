@@ -25,18 +25,14 @@ public class CategoryEntity {
     private String category;
     private Long userId;
 
-    private LocalDate deletedDate;
-
     @Builder
     public CategoryEntity(RequestCreateCategoryInput requestCreateCategoryInput) {
         this.userId = requestCreateCategoryInput.getUserId();
         this.category = requestCreateCategoryInput.getCategory();
-        this.deletedDate = null;
     }
 
     public CategoryEntity(Long userId, String category) {
         this.userId = userId;
         this.category = category;
-        this.deletedDate = null;
     }
 }
