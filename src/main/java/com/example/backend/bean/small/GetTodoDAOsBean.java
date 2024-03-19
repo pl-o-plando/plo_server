@@ -21,4 +21,8 @@ public class GetTodoDAOsBean {
     public List<TodoEntity> exec(Long userId, LocalDate date) {
         return new ArrayList<>(todoRepository.findByUserIdAndCreatedAt(userId, date));
     }
+
+    public List<TodoEntity> exec(Long userId, Long categoryId, LocalDate date) {
+        return new ArrayList<>(todoRepository.findByUserIdAndCategoryIdAndCreatedAt(userId, categoryId, date));
+    }
 }

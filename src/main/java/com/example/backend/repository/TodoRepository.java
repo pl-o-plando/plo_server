@@ -10,4 +10,6 @@ public interface TodoRepository extends JpaRepository<TodoEntity, Long> {
     List<TodoEntity> findByUserId(Long UserId);
 
     List<TodoEntity> findByUserIdAndCreatedAt(Long UserId, LocalDate CreatedAt);
+
+    List<TodoEntity> findByUserIdAndCategoryIdAndCreatedAt(Long UserId, Long CategoryId, LocalDate CreatedAt);
 }

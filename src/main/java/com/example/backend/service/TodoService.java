@@ -4,6 +4,7 @@ import com.example.backend.bean.*;
 import com.example.backend.model.dto.RequestChangeStateTodoInput;
 import com.example.backend.model.dto.RequestModifyTodoInput;
 import com.example.backend.model.dto.RequestWriteTodoInput;
+import com.example.backend.model.dto.ResponseSearchTodoByUserAndDate;
 import com.example.backend.model.entity.TodoEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -36,7 +37,7 @@ public class TodoService {
         return showTodoBean.exec(userId);
     }
 
-    public List<TodoEntity> getTodoEntityByDate(Long userId, LocalDate date) {
+    public ResponseSearchTodoByUserAndDate getTodoEntityByDate(Long userId, LocalDate date) {
         return showTodoBean.exec(userId, date);
     }
 

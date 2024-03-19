@@ -3,6 +3,7 @@ package com.example.backend.controller;
 import com.example.backend.model.dto.RequestModifyTodoInput;
 import com.example.backend.model.dto.RequestWriteTodoInput;
 import com.example.backend.model.dto.RequestChangeStateTodoInput;
+import com.example.backend.model.dto.ResponseSearchTodoByUserAndDate;
 import com.example.backend.model.entity.TodoEntity;
 import com.example.backend.service.TodoService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -40,7 +41,7 @@ public class TodoController {
     }
 
     @Operation(summary = "투두 수정", description = "투두 수정 성공 여부를 반환합니다.")
-    @PostMapping("/todo/modify")
+    @PatchMapping("/todo/modify")
     public ResponseEntity<Map<String, Object>> modifyTodo(@RequestBody RequestModifyTodoInput requestModifyTodoInput) {
         // 투두 정보 받기
         TodoEntity todoEntity = todoService.modifyTodoEntity(requestModifyTodoInput);
@@ -80,8 +81,8 @@ public class TodoController {
 
     @Operation(summary = "특정 유저의 날짜별 투두 조회", description = "조회된 투두 내역을 반환합니다.")
     @GetMapping("/todo/list")
-    public List<TodoEntity> searchByDateTodo(@RequestParam("userId") Long userId,
-                                             @RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+    public ResponseSearchTodoByUserAndDate searchByDateTodo(@RequestParam("userId") Long userId,
+                                                            @RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
         return todoService.getTodoEntityByDate(userId, date);
     }
 
