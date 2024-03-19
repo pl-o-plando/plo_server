@@ -1,15 +1,16 @@
 package com.example.backend.bean.small;
 
-import com.example.backend.model.dto.RequestCreateCategoryInput;
-import com.example.backend.model.dto.RequestCreateRoutineInput;
-import com.example.backend.model.dto.RequestWriteTodoInput;
-import com.example.backend.model.dto.RequestUserSignup;
+import com.example.backend.model.dto.*;
 import com.example.backend.model.entity.CategoryEntity;
 import com.example.backend.model.entity.RoutineEntity;
 import com.example.backend.model.entity.TodoEntity;
 import com.example.backend.model.entity.UserEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 @RequiredArgsConstructor
@@ -52,5 +53,33 @@ public class NewObjectDAOBean {
                                             .requestCreateRoutineInput(requestCreateRoutineInput)
                                             .build();
         return routineEntity;
+    }
+
+    // 투두 조회 객체 생성
+    public ResponseSearchTodoByUserAndDate exec(Long userId, LocalDate date, List<ResponseTodoByCategory> list) {
+        ResponseSearchTodoByUserAndDate responseSearchTodoByUserAndDate = new ResponseSearchTodoByUserAndDate();
+        responseSearchTodoByUserAndDate.setUserId(userId);
+        responseSearchTodoByUserAndDate.setSearchDate(date);
+        responseSearchTodoByUserAndDate.setCategoryList(list);
+
+        return responseSearchTodoByUserAndDate;
+    }
+
+    // 카테고리별 투두 조회 객체 생성
+    public ResponseTodoByCategory exec(CategoryEntity categoryEntity) {
+        ResponseTodoByCategory responseTodoByCategory = new ResponseTodoByCategory();
+        responseTodoByCategory.setCategoryId(categoryEntity.getId());
+        responseTodoByCategory.setCategory(categoryEntity.getCategory());
+        responseTodoByCategory.setTodoList(new ArrayList<>());
+
+        return responseTodoByCategory;
+    }
+
+    public ResponseSimpleTodo exec(TodoEntity todoEntity) {
+        ResponseSimpleTodo responseSimpleTodo = new ResponseSimpleTodo();
+        responseSimpleTodo.setTodoId(todoEntity.getId());
+        responseSimpleTodo.setContent(todoEntity.getContent());
+
+        return responseSimpleTodo;
     }
 }
