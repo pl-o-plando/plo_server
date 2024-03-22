@@ -1,7 +1,9 @@
 package com.example.backend.bean.small;
 
 import com.example.backend.model.entity.CategoryEntity;
+import com.example.backend.model.entity.DeleteCategoryEntity;
 import com.example.backend.repository.CategoryRepository;
+import com.example.backend.repository.DeleteCategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
