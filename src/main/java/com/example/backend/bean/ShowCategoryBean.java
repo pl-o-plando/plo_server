@@ -14,4 +14,6 @@ public class ShowCategoryBean {
     public List<CategoryEntity> exec(Long userId) {
         return getCategoryDAOsBean.exec(userId);
     }
+
+    public List<CategoryEntity> exec(Long userId, boolean flag) { return getCategoryDAOsBean.exec(userId, flag); }
 }

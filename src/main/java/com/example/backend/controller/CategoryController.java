@@ -52,10 +52,16 @@ public class CategoryController {
         return ResponseEntity.status(httpStatus).body(requestMap);
     }
 
-    @Operation(summary = "유저별 카테고리 조회", description = "조회된 카테고리 내역을 반환합니다.")
+    @Operation(summary = "유저별 사용 가능한 카테고리 조회", description = "조회된 카테고리 내역을 반환합니다.")
     @GetMapping("/category/list")
-    public List<CategoryEntity> searchByUserTodo(@RequestParam("userId") Long userId) {
-        return categoryService.getCategoryEntityByUserId(userId);
+    public List<CategoryEntity> searchByUser(@RequestParam("userId") Long userId) {
+        return categoryService.getCategoryEntityByUserId(userId, false);
+    }
+
+    @Operation(summary = "유저별 모든 카테고리 조회", description = "조회된 카테고리 내역을 반환합니다.")
+    @GetMapping("/category/allList")
+    public List<CategoryEntity> searchByUserAll(@RequestParam("userId") Long userId) {
+        return categoryService.getAllCategoryEntityByUserId(userId);
     }
 
     @Operation(summary = "카테고리 수정", description = "카테고리 수정 성공 여부를 반환합니다.")
