@@ -22,6 +22,7 @@ public class DiaryEntity {
     @Column(name = "diary_id")
     private Long id;
 
+    private String feel;
     private String content;
     private LocalDate createdAt;
 
@@ -31,13 +32,15 @@ public class DiaryEntity {
 
     @Builder
     public DiaryEntity(RequestWriteDiaryInput requestWriteDiaryInput) {
+        this.feel = requestWriteDiaryInput.getFeel();
         this.content = requestWriteDiaryInput.getContent();
         this.createdAt = LocalDate.parse(requestWriteDiaryInput.getDate());
         this.userId = requestWriteDiaryInput.getUserId();
         this.isDeleted = false;
     }
 
-    public DiaryEntity(String content, String date, Long userId) {
+    public DiaryEntity(String feel, String content, String date, Long userId) {
+        this.feel = feel;
         this.content = content;
         this.createdAt = LocalDate.parse(date);
         this.userId = userId;
