@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -56,7 +57,7 @@ public class UserController {
     }
 
     @Operation(summary = "유저 수정", description = "유저 수정 성공 여부를 반환합니다.")
-    @PostMapping("/user/modify")
+    @PatchMapping("/user/modify")
     public ResponseEntity<Map<String, Object>> modifyUser(@RequestBody RequestModifyUserInput requestModifyUserInput) {
         // 회원가입 정보 받기
         UserEntity userEntity = userService.modifyUserEntity(requestModifyUserInput);
