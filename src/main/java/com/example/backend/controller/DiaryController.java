@@ -1,17 +1,17 @@
 package com.example.backend.controller;
 
 import com.example.backend.model.dto.RequestModifyDiaryInput;
-import com.example.backend.model.dto.RequestModifyTodoInput;
 import com.example.backend.model.dto.RequestWriteDiaryInput;
 import com.example.backend.model.entity.DiaryEntity;
-import com.example.backend.model.entity.TodoEntity;
 import com.example.backend.service.DiaryService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -68,5 +68,12 @@ public class DiaryController {
         requestMap.put("diary", diaryEntity);
 
         return ResponseEntity.status(httpStatus).body(requestMap);
+    }
+
+    @Operation(summary = "특정 유저의 특정 날짜 일기 조회", description = "조회된 일기 내역을 반환합니다.")
+    @GetMapping("/diary/search")
+    public DiaryEntity searchByDateDiary(@RequestParam("userId") Long userId,
+                                         @RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+        return diaryService.getTodoEntityByUserAndDate(userId, date);
     }
 }

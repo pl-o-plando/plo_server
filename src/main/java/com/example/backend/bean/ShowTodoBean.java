@@ -27,11 +27,6 @@ public class ShowTodoBean {
     }
 
     public ResponseSearchTodoByUserAndDate exec(Long userId, LocalDate date) {
-        /*
-        * 필요한 카테고리 id를 모두 받아옴
-        * id로 카테고리 레포에서 ResponseTodoByCategory 리스트 생성
-        * 생성된 리스트로 아래 for문 실행
-        * */
         Set<Long> categoryIdList = getIDBean.exec(getTodoDAOsBean.exec(userId, date));
         categoryIdList.addAll(getCategoryDAOsBean.exec(userId)
                                                     .stream()
