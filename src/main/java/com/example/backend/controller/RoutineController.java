@@ -59,7 +59,7 @@ public class RoutineController {
     }
 
     @Operation(summary = "루틴 수정", description = "루틴 수정 성공 여부를 반환합니다.")
-    @PostMapping("/routine/modify")
+    @PatchMapping("/routine/modify")
     public ResponseEntity<Map<String, Object>> modifyCategory(@RequestBody RequestModifyRoutineInput requestModifyRoutineInput) {
         // 루틴 정보 받기
         RoutineEntity routineEntity = routineService.modifyRoutineEntity(requestModifyRoutineInput);

@@ -87,7 +87,7 @@ public class TodoController {
     }
 
     @Operation(summary = "투두 상태 변경", description = "투두 상태 변경 성공 여부를 반환합니다.")
-    @PostMapping("/todo/state")
+    @PatchMapping("/todo/state")
     public ResponseEntity<Map<String, Object>> changeStateTodo(@RequestBody RequestChangeStateTodoInput requestChangeStateTodoInput) {
         TodoEntity todoEntity = todoService.changeStateTodoEntity(requestChangeStateTodoInput);
 
