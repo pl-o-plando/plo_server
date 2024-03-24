@@ -59,7 +59,7 @@ public class CategoryController {
     }
 
     @Operation(summary = "카테고리 수정", description = "카테고리 수정 성공 여부를 반환합니다.")
-    @PostMapping("/category/modify")
+    @PatchMapping("/category/modify")
     public ResponseEntity<Map<String, Object>> modifyCategory(@RequestBody RequestModifyCategoryInput requestModifyCategoryInput) {
         // 카테고리 정보 받기
         CategoryEntity categoryEntity = categoryService.modifyCategoryEntity(requestModifyCategoryInput);
