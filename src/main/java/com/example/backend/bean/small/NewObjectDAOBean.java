@@ -1,10 +1,7 @@
 package com.example.backend.bean.small;
 
 import com.example.backend.model.dto.*;
-import com.example.backend.model.entity.CategoryEntity;
-import com.example.backend.model.entity.RoutineEntity;
-import com.example.backend.model.entity.TodoEntity;
-import com.example.backend.model.entity.UserEntity;
+import com.example.backend.model.entity.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -53,6 +50,14 @@ public class NewObjectDAOBean {
                                             .requestCreateRoutineInput(requestCreateRoutineInput)
                                             .build();
         return routineEntity;
+    }
+
+    // 일기 객체 생성
+    public DiaryEntity exec(RequestWriteDiaryInput requestWriteDiaryInput) {
+        DiaryEntity diaryEntity = DiaryEntity.builder()
+                .requestWriteDiaryInput(requestWriteDiaryInput)
+                .build();
+        return diaryEntity;
     }
 
     // 투두 조회 객체 생성
