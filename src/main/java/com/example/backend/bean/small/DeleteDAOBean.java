@@ -1,13 +1,7 @@
 package com.example.backend.bean.small;
 
-import com.example.backend.model.entity.CategoryEntity;
-import com.example.backend.model.entity.RoutineEntity;
-import com.example.backend.model.entity.TodoEntity;
-import com.example.backend.model.entity.UserEntity;
-import com.example.backend.repository.CategoryRepository;
-import com.example.backend.repository.RoutineRepository;
-import com.example.backend.repository.TodoRepository;
-import com.example.backend.repository.UserRepository;
+import com.example.backend.model.entity.*;
+import com.example.backend.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +12,7 @@ public class DeleteDAOBean {
     private final TodoRepository todoRepository;
     private final CategoryRepository categoryRepository;
     private final RoutineRepository routineRepository;
+    private final DiaryRepository diaryRepository;
 
     // 유저 삭제
     public void exec(UserEntity userEntity) {
@@ -38,4 +33,10 @@ public class DeleteDAOBean {
 
     // 루틴 삭제
     public void exec(RoutineEntity routineEntity) { routineRepository.delete(routineEntity); }
+
+    // 일기 삭제
+    public void exec(DiaryEntity diaryEntity) {
+        diaryEntity.setDeleted(true);
+        diaryRepository.save(diaryEntity);
+    }
 }
