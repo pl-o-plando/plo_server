@@ -70,6 +70,7 @@ public class NewObjectDAOBean {
         ResponseTodoByCategory responseTodoByCategory = new ResponseTodoByCategory();
         responseTodoByCategory.setCategoryId(categoryEntity.getId());
         responseTodoByCategory.setCategory(categoryEntity.getCategory());
+        responseTodoByCategory.setDeleted(categoryEntity.isDeleted());
         responseTodoByCategory.setTodoList(new ArrayList<>());
 
         return responseTodoByCategory;

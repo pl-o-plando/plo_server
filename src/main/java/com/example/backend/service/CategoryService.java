@@ -28,7 +28,11 @@ public class CategoryService {
         return deleteCategoryBean.exec(categoryId);
     }
 
-    public List<CategoryEntity> getCategoryEntityByUserId(Long userId) {
+    public List<CategoryEntity> getCategoryEntityByUserId(Long userId, boolean flag) {
+        return showCategoryBean.exec(userId, flag);
+    }
+
+    public List<CategoryEntity> getAllCategoryEntityByUserId(Long userId) {
         return showCategoryBean.exec(userId);
     }
 

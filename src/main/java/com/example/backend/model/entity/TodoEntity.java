@@ -31,6 +31,8 @@ public class TodoEntity {
     private Long userId;
     private Long categoryId;
 
+    private boolean isDeleted;
+
     @Builder
     public TodoEntity(RequestWriteTodoInput requestWriteTodoInput) {
         this.categoryId = requestWriteTodoInput.getCategoryId();
@@ -38,6 +40,7 @@ public class TodoEntity {
         this.createdAt = LocalDate.parse(requestWriteTodoInput.getDate());
         this.userId = requestWriteTodoInput.getUserId();
         this.isCompleted = 0;
+        this.isDeleted = false;
     }
 
     public TodoEntity(String content, Long categoryId, Long userId, String date) {
@@ -45,5 +48,6 @@ public class TodoEntity {
         this.userId = userId;
         this.categoryId = categoryId;
         this.createdAt = LocalDate.parse(date);
+        this.isDeleted = false;
     }
 }
