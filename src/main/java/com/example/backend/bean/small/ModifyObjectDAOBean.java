@@ -1,13 +1,7 @@
 package com.example.backend.bean.small;
 
-import com.example.backend.model.dto.RequestModifyCategoryInput;
-import com.example.backend.model.dto.RequestModifyRoutineInput;
-import com.example.backend.model.dto.RequestModifyTodoInput;
-import com.example.backend.model.dto.RequestModifyUserInput;
-import com.example.backend.model.entity.CategoryEntity;
-import com.example.backend.model.entity.RoutineEntity;
-import com.example.backend.model.entity.TodoEntity;
-import com.example.backend.model.entity.UserEntity;
+import com.example.backend.model.dto.*;
+import com.example.backend.model.entity.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -54,5 +48,13 @@ public class ModifyObjectDAOBean {
         routineEntity.setRoutine(requestModifyRoutineInput.getRoutine());
 
         return routineEntity;
+    }
+
+    // 일기 객체의 값을 변경
+    public DiaryEntity exec(DiaryEntity diaryEntity, RequestModifyDiaryInput requestModifyDiaryInput) {
+        diaryEntity.setFeel(requestModifyDiaryInput.getFeel());
+        diaryEntity.setContent(requestModifyDiaryInput.getContent());
+
+        return diaryEntity;
     }
 }

@@ -1,7 +1,10 @@
 package com.example.backend.controller;
 
+import com.example.backend.model.dto.RequestModifyDiaryInput;
+import com.example.backend.model.dto.RequestModifyTodoInput;
 import com.example.backend.model.dto.RequestWriteDiaryInput;
 import com.example.backend.model.entity.DiaryEntity;
+import com.example.backend.model.entity.TodoEntity;
 import com.example.backend.service.DiaryService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
@@ -46,6 +49,23 @@ public class DiaryController {
         Map<String, Object> requestMap = new HashMap<>();
         requestMap.put("message", (id != null) ? "Delete Success" : "Delete Fail");
         requestMap.put("id", id);
+
+        return ResponseEntity.status(httpStatus).body(requestMap);
+    }
+
+    @Operation(summary = "일기 수정", description = "일기 수정 성공 여부를 반환합니다.")
+    @PatchMapping("/diary/modify")
+    public ResponseEntity<Map<String, Object>> modifyDiary(@RequestBody RequestModifyDiaryInput requestModifyDiaryInput) {
+        // 투두 정보 받기
+        DiaryEntity diaryEntity = diaryService.modifyDiaryEntity(requestModifyDiaryInput);
+
+        // HTTP 상태 반환
+        HttpStatus httpStatus = (diaryEntity != null) ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR;
+
+        // 메시지와 할일 데이터를 JSON 데이터로 반환
+        Map<String, Object> requestMap = new HashMap<>();
+        requestMap.put("message", (diaryEntity != null) ? "diary Modify Success" : "diary Modify Fail");
+        requestMap.put("diary", diaryEntity);
 
         return ResponseEntity.status(httpStatus).body(requestMap);
     }
