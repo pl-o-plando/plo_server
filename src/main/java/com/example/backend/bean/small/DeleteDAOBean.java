@@ -30,7 +30,10 @@ public class DeleteDAOBean {
     }
 
     // 카테고리 삭제
-    public void exec(CategoryEntity categoryEntity) { categoryRepository.delete(categoryEntity); }
+    public void exec(CategoryEntity categoryEntity) {
+        categoryEntity.setDeleted(true);
+        categoryRepository.save(categoryEntity);
+    }
 
     // 루틴 삭제
     public void exec(RoutineEntity routineEntity) { routineRepository.delete(routineEntity); }

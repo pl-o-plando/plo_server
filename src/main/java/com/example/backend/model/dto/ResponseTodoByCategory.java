@@ -8,5 +8,6 @@ import java.util.List;
 public class ResponseTodoByCategory {
     Long categoryId;
     String category;
+    boolean isDeleted;
     List<ResponseSimpleTodo> todoList;
 }

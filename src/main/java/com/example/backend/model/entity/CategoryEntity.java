@@ -10,8 +10,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
-
 @Entity
 @Getter
 @Setter
@@ -25,18 +23,18 @@ public class CategoryEntity {
     private String category;
     private Long userId;
 
-    private LocalDate deletedDate;
+    private boolean isDeleted;
 
     @Builder
     public CategoryEntity(RequestCreateCategoryInput requestCreateCategoryInput) {
         this.userId = requestCreateCategoryInput.getUserId();
         this.category = requestCreateCategoryInput.getCategory();
-        this.deletedDate = null;
+        this.isDeleted = false;
     }
 
     public CategoryEntity(Long userId, String category) {
         this.userId = userId;
         this.category = category;
-        this.deletedDate = null;
+        this.isDeleted = false;
     }
 }
